@@ -23,7 +23,7 @@ author = 'The NeuroLibre Team'
 
 # The full version, including alpha/beta/rc tags
 release = 'v0.1'
-
+master_doc = 'index'
 
 # -- General configuration ---------------------------------------------------
 
