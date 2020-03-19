@@ -344,3 +344,21 @@ This is because the user is automatically redirected from :code:`8585` to the in
 If you would like to interact with a built environment, you need to 
 forward :code:`your_minikube_IP:30123` to another port in your laptop
 using another terminal.
+
+Finally, Docker images created by Binder builds in the minikube host 
+can be seen simply by :code:`docker images`. If you'd like to switch docker
+environment back to the default user, run :code:`eval $(docker-env -u)`.
+
+Terminate the BinderHub running on port :code:`8585` by simply `ctrl+c`.
+
+To delete the JupyterHub running on minikube, first :code:`helm list`, then 
+:code:`helm delete --purge <whatever_the_name_is>`.
+
+Further tips such as using a local :code:`repo2docker` installation instead of
+the one comes in a container, enabling debug logging (really useful) and more, 
+please visit the `original resource <https://github.com/jupyterhub/binderhub/blob/master/CONTRIBUTING.md#tip-use-local-repo2docker-version>`_.
+
+To see how BinderHub automates building and publishing images for helm 
+charts, please visit the `chartpress <https://github.com/jupyterhub/chartpress>`_.
+
+
