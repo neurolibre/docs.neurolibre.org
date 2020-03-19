@@ -11,7 +11,7 @@ We want to share our experience with the community, hence all our installation s
 
 .. warning:: NeuroLibre is still at an alpha stage of development, the github repositories will change frequently so be carefull if you use them.
 
-Bare-metal to BinderHub 
+Bare-metal to BinderHub
 -----------------------
 
 Installation of the BinderHub  from bare-metal is fully automatic and reproducible through `terraform <https://www.terraform.io/>`_ configuration
@@ -43,7 +43,7 @@ For the ssh authentication on the BinderHub  server, you have two choices : i) u
      mkdir /my-keys
 
 2. Option (i), use neurolibre’s key (recommended):
-   
+
    a. Simply copy the public :code:`id_rsa.pub` and private key :code:`id_rsa` to :code:`/home/$USER/my-keys/`
 
       .. code-block:: console
@@ -59,7 +59,7 @@ For the ssh authentication on the BinderHub  server, you have two choices : i) u
         cp /home/$USER/.ssh/id_rsa* /home/$USER/my-keys/
 
    b. If not already associated, add your local's key to your GitHub account:
-      
+
       * You can check and add new keys on your `GitHub settings <https://github.com/settings/keys>`_.
       * Test your ssh connection to your GitHub account by following `these steps <https://help.github.com/en/github/authenticating-to-github/testing-your-ssh-connection>`_.
 
@@ -90,13 +90,13 @@ To achieve this, you will instantiate a container (from the image you just pulle
 You will be mounting two directories into the container: :code:`/my_keys` containing the files from :ref:`Pre-setup`, and :code:`/instance_name` containing the terraform recipe and artifacts.
 
 .. warning:: The Docker container that you will run contain sensitive information (i.e. your ssh keys, passwords, etc), so never share it with anyone else.
-             If you need to share information to another developer, share the Dockerfile and/or these instructions.       
-.. note:: The Docker image itself has no knowledge of the sensitive files since they are used just at runtime 
+             If you need to share information to another developer, share the Dockerfile and/or these instructions.
+.. note:: The Docker image itself has no knowledge of the sensitive files since they are used just at runtime
              (through `entrypoint <https://docs.docker.com/engine/reference/run/#entrypoint-default-command-to-execute-at-runtime>`_ command).
 
 1. Place a :code:`main.tf` file (see :ref:`Appendix A` for details) into a new folder :code:`/instance-name`, which describes the terraform recipe for spawning a BinderHub instance on the cloud provider.
    For convenience, we suggest that you use the actual name of the instance (value of the :code:`project_name` field in :code:`main.tf`).
-   
+
    .. code-block:: console
 
      mkdir /home/$USER/instance-name
@@ -114,7 +114,7 @@ You will be mounting two directories into the container: :code:`/my_keys` contai
 
 4. For security measure, stop and delete the container that you used to span the instance:
 
-   .. code-block:: console 
+   .. code-block:: console
 
      sudo docker stop conpdev/neurolibre-instance:v1.2
      sudo docker rm conpdev/neurolibre-instance:v1.2
@@ -126,7 +126,7 @@ Here we describe the default terraform recipe that can be used to spawn a Binder
 There are three different modules used by our terraform scripts, all run consecutively and only if the previous one succeeded.
 
 1. :code:`provider` populates terraform with the variables related to our cloud provider (compute canada as of late 2019):
-    
+
     * :code:`project_name`: name of the instances (will be :code:`project_name_master` and :code:`project_name_nodei`)
     * :code:`nb_nodes`: number of k8s nodes **excluding** the master node
     * :code:`instance_volume_size`: main volume size of the instances in GB **including** the master node
@@ -150,10 +150,10 @@ There are three different modules used by our terraform scripts, all run consecu
     * :code:`binder_version`: you can check the current BinderHub  version releases `here <https://jupyterhub.github.io/helm-chart/>`_
     * :code:`TLS_email`: this email will be used by `Let's Encrypt <https://letsencrypt.org/>`_ to request a TLS certificate
     * :code:`TLS_name`: TLS certificate name should be the same as the domain but with dashes :code:`-` instead of points :code:`.`
-    * :code:`mem_alloc_gb`: Amount of RAM (in GB) used by each user of your BinderHub 
+    * :code:`mem_alloc_gb`: Amount of RAM (in GB) used by each user of your BinderHub
     * :code:`cpu_alloc`: Number of CPU cores
       (`Intel® Xeon® Gold 6130 <https://ark.intel.com/content/www/us/en/ark/products/120492/intel-xeon-gold-6130-processor-22m-cache-2-10-ghz.html>`_
-      for compute canada) used by each user of your BinderHub  
+      for compute canada) used by each user of your BinderHub
 
 .. code-block:: json
    :linenos:
@@ -197,14 +197,14 @@ There are three different modules used by our terraform scripts, all run consecu
     docker_password  = "${module.provider.docker_password}"
     }
 
-BinderHub test mode 
-----------
+BinderHub test mode
+-------------------
 
 To make changes to the K8s integration of BinderHub, such as injecting `repo2data` specific `labels` to a `build pod`, we need to bring up a BinderHub for development.
-The following guidelines are inhereted from `the original BinderHub docs <https://github.com/jupyterhub/binderhub/blob/master/CONTRIBUTING.md#kubernetes-integration-changes>`_. This documentation assumes that the development 
-is to be done in a remote node via :code:`ssh` access. 
+The following guidelines are inhereted from `the original BinderHub docs <https://github.com/jupyterhub/binderhub/blob/master/CONTRIBUTING.md#kubernetes-integration-changes>`_. This documentation assumes that the development
+is to be done in a remote node via :code:`ssh` access.
 
-1. :code:`ssh` into the node 
+1. :code:`ssh` into the node
 
 2. Launch shell as the root user:
 
@@ -253,29 +253,29 @@ is to be done in a remote node via :code:`ssh` access.
 
      helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
      helm repo update
-   
+
    The process is successfull if you see the :code:`Hub is up` message.
 
-10. Install BinderHub and its development requirements: 
+10. Install BinderHub and its development requirements:
 
    .. code-block:: console
 
      python3 -m pip install -e . -r dev-requirements.txt
 
-11. Install JupyterHub in the minikube with helm: 
+11. Install JupyterHub in the minikube with helm:
 
    .. code-block:: console
 
      ./testing/minikube/install-hub
 
-12. Make minikube use the host Docker daemon : 
+12. Make minikube use the host Docker daemon :
 
    .. code-block:: console
 
      eval $(minikube docker-env)
-   
+
    Expect :code:`'none' driver does not support 'minikube docker-env' command` message.
-   This is intended behavior. 
+   This is intended behavior.
 
 13. Run :code:`helm list` command to see if the JupytherHub is listed. It should look   like:
 
@@ -283,37 +283,37 @@ is to be done in a remote node via :code:`ssh` access.
 
      binder-test-hub 1 DEPLOYED jupyterhub-0.9.0-beta.4 1.1.0
 
-Now, you are ready to start BinderHub with a config file. As done in the reference doc, 
+Now, you are ready to start BinderHub with a config file. As done in the reference doc,
 start the binderhub with the config in the :code:`testing` directory:
 
    .. code-block:: console
 
      python3 -m binderhub -f testing/minikube/binderhub_config.py
 
-Note that you are starting :code:`BinderHub` with module name. This is possible 
+Note that you are starting :code:`BinderHub` with module name. This is possible
 thanks to the step-10 above. In that step, :code:`-e` argument is passed to :code:`pip`
-to point the local :code:`../binderhub` directory as the project path via :code:`.` value. This is why the changes you made in the :code:`/binderhub` directory will take effect. 
+to point the local :code:`../binderhub` directory as the project path via :code:`.` value. This is why the changes you made in the :code:`/binderhub` directory will take effect.
 
-There are some details worth knowing in the :code:`testing/minikube/binderhub_config.py` file, such as: 
+There are some details worth knowing in the :code:`testing/minikube/binderhub_config.py` file, such as:
 
    .. code-block:: console
 
      c.BinderHub.hub_url = 'http://{}:30123'.format(minikube_ip)
 
-This means that upon a successful build, the BinderHub session will be exposed 
+This means that upon a successful build, the BinderHub session will be exposed
 to :code:`your_minikube_IP:30123`. To find out your minikube IP, you can Simply
-run `minikube ip` command. 
+run `minikube ip` command.
 
 The port number :code:`30123` is described in :code:`jupyterhub-helm-config.yaml`.
 
-If everything went right, then you should be seeing the following message: 
+If everything went right, then you should be seeing the following message:
 
    .. code-block:: console
 
      [I 200318 23:53:33 app:692] BinderHub starting on port 8585
 
 Just leave this terminal window as is. Open a new terminal and do ssh forward
-the port :code:`8585` to the port :code:`4000` of your own computer by: 
+the port :code:`8585` to the port :code:`4000` of your own computer by:
 
    .. code-block:: console
 
@@ -322,44 +322,42 @@ the port :code:`8585` to the port :code:`4000` of your own computer by:
 Open your web browser and visit :code:`http://localhost:4000/`. BinderHub should
 be running here.
 
-When you start a build project by pointing BinderHub to a GitHub repo, a pod 
-will be associated with the process. You can see this pod by opening a `third` 
-terminal in your computer. Do not login shell as root in the second terminal, 
-which is used for :code:`ssh 8585-->4000` port forwarding. 
+When you start a build project by pointing BinderHub to a GitHub repo, a pod
+will be associated with the process. You can see this pod by opening a `third`
+terminal in your computer. Do not login shell as root in the second terminal,
+which is used for :code:`ssh 8585-->4000` port forwarding.
 
-In the 3rd terminal, do the steps 1 and 2 (above), then: 
+In the 3rd terminal, do the steps 1 and 2 (above), then:
 
    .. code-block:: console
 
      kubectl get pods -n binder-test
 
-If you injected some metadata, label etc. to a pod, you can see by: 
+If you injected some metadata, label etc. to a pod, you can see by:
 
    .. code-block:: console
 
      kubectl get describe -n binder-test <pod_name>
 
-It is expected that you'll receive a 404 response after a successful Binder build. 
+It is expected that you'll receive a 404 response after a successful Binder build.
 This is because the user is automatically redirected from :code:`8585` to the instance served at :code:`your_minikube_IP:30123`.
 
-If you would like to interact with a built environment, you need to 
+If you would like to interact with a built environment, you need to
 forward :code:`your_minikube_IP:30123` to another port in your laptop
 using another terminal.
 
-Finally, Docker images created by Binder builds in the minikube host 
+Finally, Docker images created by Binder builds in the minikube host
 can be seen simply by :code:`docker images`. If you'd like to switch docker
 environment back to the default user, run :code:`eval $(docker-env -u)`.
 
 Terminate the BinderHub running on port :code:`8585` by simply `ctrl+c`.
 
-To delete the JupyterHub running on minikube, first :code:`helm list`, then 
+To delete the JupyterHub running on minikube, first :code:`helm list`, then
 :code:`helm delete --purge <whatever_the_name_is>`.
 
 Further tips such as using a local :code:`repo2docker` installation instead of
-the one comes in a container, enabling debug logging (really useful) and more, 
+the one comes in a container, enabling debug logging (really useful) and more,
 please visit the `original resource <https://github.com/jupyterhub/binderhub/blob/master/CONTRIBUTING.md#tip-use-local-repo2docker-version>`_.
 
-To see how BinderHub automates building and publishing images for helm 
+To see how BinderHub automates building and publishing images for helm
 charts, please visit the `chartpress <https://github.com/jupyterhub/chartpress>`_.
-
-
