@@ -62,10 +62,6 @@ html_favicon = 'img/logo_neurolibre_small.png'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# (Optional) Logo. Should be small enough to fit the navbar (ideally 24x24).
-# Path should be relative to the ``_static`` files directory.
-html_logo = "my_logo.png"
-
 # Theme options are theme-specific and customize the look and feel of a
 # theme further.
 html_theme_options = {
