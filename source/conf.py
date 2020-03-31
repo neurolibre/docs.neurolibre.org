@@ -55,7 +55,7 @@ html_theme = 'bootstrap'
 html_logo = 'img/logo_neurolibre.png'
 
 # icon
-html_favicon = 'img/logo_neurolibre_small.png'
+html_favicon = 'img/favicon.png'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
