@@ -51,7 +51,7 @@ exclude_patterns = []
 html_theme = 'sphinx_rtd_theme'
 
 # The logo
-html_logo = 'img/logo_neurolibre.png'
+html_logo = 'img/neurolibre_logo.svg'
 
 # icon
 html_favicon = 'img/logo_neurolibre_small.png'
