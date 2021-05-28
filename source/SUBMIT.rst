@@ -109,8 +109,8 @@ We expect to find all the submission material in a **public** GitHub repository 
 
 NeuroLibre offers generous data storage and caching to supercharge your preprint. If your executable content consumes input data, please read this section carefully.
 
-To download data, NeuroLibre looks for a `repo2data <https://github.com/SIMEXP/Repo2Data>`_ configuration file: ``data_requirement.json``. If this file points to a publicly available
-dataset, the data will be made available to the readers at the ``data`` folder during preprint runtime.
+To download data, NeuroLibre looks for a `repo2data <https://github.com/SIMEXP/Repo2Data>`_ configuration file: ``data_requirement.json``. This file needs to points to a publicly available
+dataset, so the data will can be made available to the readers. at the ``data`` folder during preprint runtime.
 
 .. seealso:: **Repo2data** can download data from several resources including OSF, datalad, zenodo or aws. For details, please visit `repo2data <https://github.com/SIMEXP/Repo2Data>`_, where you can 
             also find the instructions to use ``repo2data`` on your local computer before requesting RoboNeuro preview service.
@@ -130,7 +130,7 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
 
 
 
-.. warning:: RoboNeuro may fail downloading relatively large datasets (**exceeding 5GB**) as the book build process times out in 30 minutes.
+.. warning:: RoboNeuro may fail downloading relatively large datasets (**exceeding 5GB**) as the book build process times out in 60 minutes.If you need more data, please create an issue
 
 .. topic:: Help RoboNeuro find your data during book build
 
