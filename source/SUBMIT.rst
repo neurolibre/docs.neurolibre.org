@@ -20,7 +20,7 @@ where you point RoboNeuro to a public GitHub repository, enter your email addres
 .. warning:: **A successful book build on RoboNeuro preview service is a prerequisite for submission.**
 
             Please note that RoboNeuro book preview is provided as a public service with limited computational resources. Therefore we encourage you to build your book locally before
-            requesting our online service. Instructions are available `here <>`_.
+            requesting our online service. Instructions are available `here <#testing-book-build-locally>`_.
 
 ⏩ Quickstart: Preprint templates
 **********************
@@ -277,7 +277,7 @@ To check if your PDF compiles, visit RoboNeuro `preprint preview page <https://r
 Assuming that:
 
 - you already installed all the dependencies to develop your notebooks locally 
-- your preprint repository follows the `NeuroLibre preprint structure <#>`_
+- your preprint repository follows the `NeuroLibre preprint structure <#preprint-repository-structure>`_
 
 you can easily test your preprint build locally.
 
