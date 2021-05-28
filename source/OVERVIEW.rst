@@ -3,7 +3,45 @@ NeuroLibre
 
 .. warning:: NeuroLibre is at an alpha stage of development, and is not currently open for submissions.
 
-NeuroLibre is a curated repository of interactive neuroscience notebooks that seamlessly integrates data, text, code and figures. Notebooks can be freely modified and re-executed through the web, offering a fully reproducible, “libre” path from data to figures. NeuroLibre is powered by the Binder project with computational resources provided by the Canadian Open Neuroscience Platform (CONP), CBRAIN, and Compute Canada.
+.. image:: https://github.com/neurolibre/brand/blob/main/png/doc_banner.png?raw=true
+  :align: center
 
-.. image:: img/neurolibre_logo.svg
-  :width: 30%
+**NeuroLibre is a preprint server for interactive data analyses.** It is tailored for publishing interactive 
+neuroscience notebooks that can seamlessly integrate data, text, code and figures.
+
+
+
++++++++++++++++
+For authors, it takes two steps: ``test`` and ``submit``
++++++++++++++++
+
+Our full-fledged (yet simple) submission workflow is designed to help researchers convert a collection of 
+Jupyter Notebooks and Markdown files into publishable content. 
+
+Providing online-executable runtimes and a powerful data caching system, NeuroLibre makes a **groundbreaking preprint
+server where you can plant the seeds of living publications.**
+
+.. image:: https://github.com/neurolibre/brand/blob/main/png/groundbreaking.png?raw=true
+  :width: 500
+  :align: center
+  :alt: NeuroLibre preprints are beyond PDFs 
+
+.. seealso:: If you would like to submit a NeuroLibre preprint, please read our `submission guidelines <#submit>`_.
+
++++++++++++++++
+For readers, it takes one click
++++++++++++++++
+
+The interactive outputs (such as interactive figures) are readily available in NeuroLibre preprints. Yet, if you'd like
+to re-run the analyses and reproduce the outputs, our powerful cloud infrastructure is at the tip of your fingers.
+
+
+.. seealso:: To find out more about how to navigate a NeuroLibre preprint, you can visit `readers guideline <#reader>`_.
+
++++++++++++++++
+Contributions are welcome, NeuroLibre is fully open-source
++++++++++++++++
+
+NeuroLibre draws its strength from community-developed tools such as `BinderHub <https://github.com/jupyterhub/binderhub>`_ and `Open Journals <https://github.com/openjournals>`_.
+
+.. seealso:: If you are interested in contributing to NeuroLibre or to deploy one of you own, please visit `developer documentation <#reader>`_.
