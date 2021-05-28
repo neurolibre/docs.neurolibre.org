@@ -26,7 +26,7 @@ server where you can plant the seeds of living publications.**
   :align: center
   :alt: NeuroLibre preprints are beyond PDFs 
 
-.. seealso:: If you would like to submit a NeuroLibre preprint, please read our `submission guidelines <#submit>`_.
+.. seealso:: If you would like to submit a NeuroLibre preprint, please read our `submission guidelines <https://docs.neurolibre.com/en/latest/SUBMIT.html>`_.
 
 +++++++++++++++
 For readers, it takes one click
@@ -44,4 +44,4 @@ Contributions are welcome, NeuroLibre is fully open-source
 
 NeuroLibre draws its strength from community-developed tools such as `BinderHub <https://github.com/jupyterhub/binderhub>`_ and `Open Journals <https://github.com/openjournals>`_.
 
-.. seealso:: If you are interested in contributing to NeuroLibre or to deploy one of you own, please visit `developer documentation <#reader>`_.
+.. seealso:: If you are interested in contributing to NeuroLibre or to deploy one of you own, please visit `developer documentation <https://docs.neurolibre.com/en/latest/INFRASTRUCTURE.html`_.
