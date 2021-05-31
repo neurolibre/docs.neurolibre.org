@@ -109,8 +109,8 @@ We expect to find all the submission material in a **public** GitHub repository 
 
 NeuroLibre offers generous data storage and caching to supercharge your preprint. If your executable content consumes input data, please read this section carefully.
 
-To download data, NeuroLibre looks for a `repo2data <https://github.com/SIMEXP/Repo2Data>`_ configuration file: ``data_requirement.json``. This file needs to points to a **publicly available
-dataset**, so the data can be made available at the ``data`` folder during preprint runtime.
+To download data, NeuroLibre looks for a `repo2data <https://github.com/SIMEXP/Repo2Data>`_ configuration file: ``data_requirement.json``. This file must point to a **publicly available
+dataset**, so the data will be available at the ``data`` folder during preprint runtime.
 
 .. seealso:: **Repo2data** can download data from several resources including OSF, datalad, zenodo or aws. For details, please visit `repo2data <https://github.com/SIMEXP/Repo2Data>`_, where you can 
             also find the instructions to use ``repo2data`` on your local computer before requesting RoboNeuro preview service.
@@ -156,8 +156,9 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
 
   If the data directories in your code cells are not following this convention, RoboNeuro will fail to re-execute your notebooks and interrupt the book build.
 
-.. note:: We suggest you to follow `this section <#testing-book-locally>`_,
-          this way your local data loading convention will naturally match that of Neurolibre.
+.. note:: We suggest testing repo2data locally before you request a RoboNeuro preview service.
+          Instructions are available `here <#testing-book-locally>`_. 
+          Matching your data loading convention with that of RoboNeuro will increase your chances of having a successful NeuroLibre preprint build.
 
 .. warning:: If you are a Windows user, manually defined paths (e.g. ``.\data\my_data.txt``) won't be recognized by the preprint runtime.
              Please use an operating system agnostic convention to define file paths or file separators. For example use ``os.path.join`` in Python.
@@ -287,12 +288,12 @@ you can easily test your preprint build locally.
 
 **Step 2 - Data**
 
-First, make sure that your data is available online.
+First, make sure that your data is available online and can be downloaded publicly.
 
 You can now install `Repo2Data <https://github.com/SIMEXP/Repo2Data>`_, and configure the ``data_requirement.json`` with ``"dst": "./data"``.
-Navigate into your repo and run repo2data, all your data should appear in the ``data`` folder at the root of your repository.
+Navigate into your repo and run repo2data, your data will download to the data folder.
 
-Finally, modify your notebooks so they consume this data.
+Finally, modify respective code lines in your notebooks to set data (relative) path to the data folder.
 
 .. warning:: Please make sure that you ignore your local ``./data`` folder and all of its contents from Git history, by adding the following in the ``.gitignore`` file:
                
