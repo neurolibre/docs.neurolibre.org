@@ -109,8 +109,8 @@ We expect to find all the submission material in a **public** GitHub repository 
 
 NeuroLibre offers generous data storage and caching to supercharge your preprint. If your executable content consumes input data, please read this section carefully.
 
-To download data, NeuroLibre looks for a `repo2data <https://github.com/SIMEXP/Repo2Data>`_ configuration file: ``data_requirement.json``. If this file points to a publicly available
-dataset, the data will be made available to the readers at the ``data`` folder during preprint runtime.
+To download data, NeuroLibre looks for a `repo2data <https://github.com/SIMEXP/Repo2Data>`_ configuration file: ``data_requirement.json``. This file must point to a **publicly available
+dataset**, so the data will be available at the ``data`` folder during preprint runtime.
 
 .. seealso:: **Repo2data** can download data from several resources including OSF, datalad, zenodo or aws. For details, please visit `repo2data <https://github.com/SIMEXP/Repo2Data>`_, where you can 
             also find the instructions to use ``repo2data`` on your local computer before requesting RoboNeuro preview service.
@@ -126,15 +126,18 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
    * - Nilearn
      - `neurolibre/repo2data-nilearn <https://github.com/neurolibre/repo2data-caching>`_
    * - OSF
-     - `neurolibre/repo2data-osf <https://github.com/ltetrel/neurolibre-osf-test>`_
+     - `neurolibre/repo2data-osf <https://github.com/neurolibre/neurolibre-osf-test>`_
 
 
 
-.. warning:: RoboNeuro may fail downloading relatively large datasets (**exceeding 5GB**) as the book build process times out in 30 minutes.
+.. warning:: 
+  RoboNeuro may fail downloading relatively large datasets (**exceeding 5GB**) as the book build process times out in 60 minutes.
+  If you have data that exceed 5GB, please create an issue in your github repository so a Neurolibre admin can check it.
 
 .. topic:: Help RoboNeuro find your data during book build
 
-  RoboNeuro downloads your data to a folder named ``data``, which is created at the base of your repository.
+  `Repo2Data <https://github.com/SIMEXP/Repo2Data>`_ downloads your data to a folder named ``data/PROJECT_NAME``, which is created at the base of your repository.
+  ``PROJECT_NAME`` is `the field <https://github.com/neurolibre/neurolibre-osf-test/blob/1edcdb82a5c3f52130572f5cd6e4f1386ae3d8e4/binder/data_requirement.json#L3>`_ that you configured in your ``data_requirement.json``.
 
   - A code cell in a ``content/my_notebook.ipynb`` would access data by:
 
@@ -142,24 +145,20 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
 
       import nibabel as nib
       import os
-      img = nib.load(os.path.join('..','data','my_brain.nii.gz'))
+      img = nib.load(os.path.join('..', 'data', 'PROJECT_NAME', 'my_brain.nii.gz'))
 
   - A code cell in a ``content/01/my_01_notebook.ipynb`` would access data by:
 
     .. code-block:: python
 
       import nibabel as nib
-      img = nib.load(os.path.join('..','..',data','my_brain.nii.gz')) # In this case, 2 upper directories
+      img = nib.load(os.path.join('..', '..', 'data', 'PROJECT_NAME', 'my_brain.nii.gz')) # In this case, 2 upper directories
 
   If the data directories in your code cells are not following this convention, RoboNeuro will fail to re-execute your notebooks and interrupt the book build.
 
-.. note:: When running your notebooks locally, we suggest that you to load data from a ``data`` folder located at the base of your repository content.
-          This way your data loading convention will match that of RoboNeuro's and you won't have remember changing directories each time you request a book preview service.
-          
-          **Please make sure that you ignore this folder and all of its contents from Git history by adding the following in the** ``.gitignore`` **file:**
-            .. code-block:: text
-
-              data/
+.. note:: We suggest testing repo2data locally before you request a RoboNeuro preview service.
+          Instructions are available `here <#testing-book-locally>`_. 
+          Matching your data loading convention with that of RoboNeuro will increase your chances of having a successful NeuroLibre preprint build.
 
 .. warning:: If you are a Windows user, manually defined paths (e.g. ``.\data\my_data.txt``) won't be recognized by the preprint runtime.
              Please use an operating system agnostic convention to define file paths or file separators. For example use ``os.path.join`` in Python.
@@ -289,9 +288,18 @@ you can easily test your preprint build locally.
 
 **Step 2 - Data**
 
-If your executable content depends on a dataset, please make sure that your notebooks have access to it.
+First, make sure that your data is available online and can be downloaded publicly.
 
-Ideally, you can test if ``repo2data`` can download your publicly available dataset based on a ``data_requirement.json`` file. Instructions can be find `here <https://github.com/SIMEXP/Repo2Data>`_.
+You can now install `Repo2Data <https://github.com/SIMEXP/Repo2Data>`_, and configure the ``data_requirement.json`` with ``"dst": "./data"``.
+Navigate into your repo and run repo2data, your data will download to the data folder.
+
+Finally, modify respective code lines in your notebooks to set data (relative) path to the data folder.
+
+.. warning:: Please make sure that you ignore your local ``./data`` folder and all of its contents from Git history, by adding the following in the ``.gitignore`` file:
+               
+            .. code-block:: text
+
+                 data/
 
 **Step 3 - Book build**
 
@@ -319,7 +327,7 @@ Ideally, you can test if ``repo2data`` can download your publicly available data
 
 Submission is as simple as:
 
-- Filling in the short submission form at `NeuroLibre web page <https://neurolibre.herokuapp.com>`
+- Filling in the short submission form at `NeuroLibre web page <https://neurolibre.herokuapp.com>`_
 - Waiting for the managing editor to start a pre-review issue over in the NeuroLibre reviews repository: https://github.com/neurolibre/neurolibre-reviews
 
 +++++++++++++++
