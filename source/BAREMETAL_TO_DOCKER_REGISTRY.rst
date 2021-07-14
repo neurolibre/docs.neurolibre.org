@@ -167,17 +167,23 @@ Create a directory ``auth`` and a new ``user`` and ``password``:
    mkdir auth
    sudo docker run --entrypoint htpasswd registry:2.7.0 -Bbn user password > auth/htpasswd
 
+Create also a folder that hold the registry content (for easier backup):
+
+.. code:: console
+
+  sudo mkdir /docker-registry
+
 After that you can launch the registry,
 
 .. code:: console
 
    sudo docker run -d -p 80:80 --restart=always --name registry \
-   -v /certs:/certs \
    -v /docker-registry:/var/lib/registry \
    -v /home/ubuntu/auth:/auth -e "REGISTRY_AUTH=htpasswd" \
    -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
    -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \
    -e REGISTRY_HTTP_ADDR=0.0.0.0:80 \
+   -e REGISTRY_STORAGE_DELETE_ENABLED=true \
    registry:2.7.0
 
 .. warning:: ``/docker-registry`` is the Docker registry volume that we configured in :ref:`Volumes creation`.
