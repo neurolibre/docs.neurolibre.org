@@ -165,20 +165,26 @@ Create a directory ``auth`` and a new ``user`` and ``password``:
 .. code:: console
 
    mkdir auth
-   sudo docker run --entrypoint htpasswd registry:2 -Bbn user password > auth/htpasswd
+   sudo docker run --entrypoint htpasswd registry:2.7.0 -Bbn user password > auth/htpasswd
+
+Create also a folder that hold the registry content (for easier backup):
+
+.. code:: console
+
+  sudo mkdir /docker-registry
 
 After that you can launch the registry,
 
 .. code:: console
 
    sudo docker run -d -p 80:80 --restart=always --name registry \
-   -v /certs:/certs \
    -v /docker-registry:/var/lib/registry \
    -v /home/ubuntu/auth:/auth -e "REGISTRY_AUTH=htpasswd" \
    -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
    -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \
    -e REGISTRY_HTTP_ADDR=0.0.0.0:80 \
-   registry:2
+   -e REGISTRY_STORAGE_DELETE_ENABLED=true \
+   registry:2.7.0
 
 .. warning:: ``/docker-registry`` is the Docker registry volume that we configured in :ref:`Volumes creation`.
 
@@ -189,9 +195,21 @@ You would first need to log-in to the Docker registry using the domain name you 
 
 .. code:: console
 
-   sudo docker login my-binder-registry.conp.cloud
+   sudo docker login my-binder-registry.conp.cloud --username user --password password
    sudo docker pull ubuntu:16.04
    sudo docker tag ubuntu:16.04 my-binder-registry.conp.cloud/my-ubuntu
    sudo docker push my-binder-registry.conp.cloud/my-ubuntu
 
 .. note:: The Docker registry can be accessed through its `HTTP api <https://docs.docker.com/registry/spec/api/>`_. This is how you can delete images from the registry for example.
+
+BinderHub considerations
+------------------------
+
+On each k8s node (including the worker), you will also need to log-in.
+You may also need to add the docker config to the ``kubelet`` lib, so the docker registry
+is properly configured on you kubernetes cluster.
+
+.. code:: console
+
+  sudo docker login my-binder-registry.conp.cloud --username user --password password
+  cp /home/${admin_user}/.docker/config.json /var/lib/kubelet/

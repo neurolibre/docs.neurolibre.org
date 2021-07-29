@@ -84,7 +84,33 @@ We expect to find all the submission material in a **public** GitHub repository 
 .. seealso:: 
   The full list of supported configuration files is available `here <https://mybinder.readthedocs.io/en/latest/using/config_files.html>`_.
 
-.. topic:: 2 - NeuroLibre dependencies
+.. topic:: 2 - Environment configuration for NeuroLibre
+
+  You should try to make your environment clean and concize, that is why the prefered configuration file for NeuroLibre are the
+  ``requirements.txt``.
+
+  It should be small (to keep environment building and loading as short as possible), and versionnized (so your
+  environment is fully reproducible, and cache-able).
+
+  For example this requirement is bad because it has lot of unnecessary dependencies:
+
+  .. code-block:: text
+
+    numpy
+    scipy
+    jupyter
+    matplotlib
+    Pillow
+    scikit-learn
+    tensorflow
+
+  On the other hand, this one is concise, reproducible and will take much less time to build:
+
+  .. code-block:: text
+
+    tensorflow==2.4.0
+
+.. topic:: 3 - NeuroLibre dependencies
 
   Our test server creates a virtual environment in which your content is re-executed to build a Jupyter Book. To enable this, we need some 
   Python packages.
