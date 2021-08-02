@@ -51,4 +51,4 @@ Contributions are welcome, NeuroLibre is fully open-source
 
 NeuroLibre draws its strength from community-developed tools such as `BinderHub <https://github.com/jupyterhub/binderhub>`_ and `Open Journals <https://github.com/openjournals>`_.
 
-.. seealso:: If you are interested in contributing to NeuroLibre or to deploy one of you own, please visit `developer documentation <https://docs.neurolibre.com/en/latest/INFRASTRUCTURE.html`_.
+.. seealso:: If you are interested in contributing to NeuroLibre or to deploy one of you own, please visit `developer documentation <https://docs.neurolibre.com/en/latest/INFRASTRUCTURE.html>`_.
