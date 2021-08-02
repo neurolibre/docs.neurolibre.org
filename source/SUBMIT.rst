@@ -135,11 +135,10 @@ We expect to find all the submission material in a **public** GitHub repository 
 
 NeuroLibre offers generous data storage and caching to supercharge your preprint. If your executable content consumes input data, please read this section carefully.
 
-To download data, NeuroLibre looks for a `repo2data <https://github.com/SIMEXP/Repo2Data>`_ configuration file: ``data_requirement.json``. This file must point to a **publicly available
-dataset**, so the data will be available at the ``data`` folder during preprint runtime.
+To download data, NeuroLibre looks for a `repo2data <https://github.com/SIMEXP/Repo2Data>`_ configuration file: ``data_requirement.json``. 
+This file must point to a **publicly available dataset**, so it can be available during preprint runtime.
 
-.. seealso:: **Repo2data** can download data from several resources including OSF, datalad, zenodo or aws. For details, please visit `repo2data <https://github.com/SIMEXP/Repo2Data>`_, where you can 
-            also find the instructions to use ``repo2data`` on your local computer before requesting RoboNeuro preview service.
+.. seealso:: **Repo2data** can download data from several resources including OSF, datalad, zenodo or aws. For details, please visit `the documentation <https://github.com/SIMEXP/Repo2Data>`_.
 
 Example preprint templates using ``repo2data`` for caching data on NeuroLibre servers:
 
@@ -162,8 +161,19 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
 
 .. topic:: Help RoboNeuro find your data during book build
 
-  `Repo2Data <https://github.com/SIMEXP/Repo2Data>`_ downloads your data to a folder named ``data/PROJECT_NAME``, which is created at the base of your repository.
-  ``PROJECT_NAME`` is `the field <https://github.com/neurolibre/neurolibre-osf-test/blob/1edcdb82a5c3f52130572f5cd6e4f1386ae3d8e4/binder/data_requirement.json#L3>`_ that you configured in your ``data_requirement.json``.
+  `Repo2Data <https://github.com/SIMEXP/Repo2Data>`_ downloads your data to a folder named ``data``, which is created at the base of your repository.
+
+  .. note:: We suggest using repo2data locally before you request a RoboNeuro preview service.
+    Matching `this data loading convention <#testing-book-build-locally>`_ will increase your chances of having a successful NeuroLibre preprint build, and will make
+    your data dependency agnostic to computer.
+
+  Assuming you are running a notebook on NeuroLibre and have a requirement file as:
+
+  .. code-block:: bash
+
+    { "src": "download_my_brain(data_dir=_dst);",
+    "projectName": "PROJECT_NAME"}
+
 
   - A code cell in a ``content/my_notebook.ipynb`` would access data by:
 
@@ -182,12 +192,8 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
 
   If the data directories in your code cells are not following this convention, RoboNeuro will fail to re-execute your notebooks and interrupt the book build.
 
-.. note:: We suggest testing repo2data locally before you request a RoboNeuro preview service.
-          Instructions are available `here <#testing-book-locally>`_. 
-          Matching your data loading convention with that of RoboNeuro will increase your chances of having a successful NeuroLibre preprint build.
-
 .. warning:: If you are a Windows user, manually defined paths (e.g. ``.\data\my_data.txt``) won't be recognized by the preprint runtime.
-             Please use an operating system agnostic convention to define file paths or file separators. For example use ``os.path.join`` in Python.
+             Please use an operating system agnostic convention to define paths, like ``os.path.join`` in Python.
         
 📁 The ``content`` folder
 """"""""""""""""""""""
@@ -314,18 +320,23 @@ you can easily test your preprint build locally.
 
 **Step 2 - Data**
 
-First, make sure that your data is available online and can be downloaded publicly.
+Install `Repo2Data <https://github.com/SIMEXP/Repo2Data>`_ and configure the ``dst`` from the requirement file so it points to a ``data`` folder at the root of the repository.
 
-You can now install `Repo2Data <https://github.com/SIMEXP/Repo2Data>`_, and configure the ``data_requirement.json`` with ``"dst": "./data"``.
-Navigate into your repo and run repo2data, your data will download to the data folder.
+.. code-block:: shell
 
-Finally, modify respective code lines in your notebooks to set data (relative) path to the data folder.
+  pip install repo2data
 
-.. warning:: Please make sure that you ignore your local ``./data`` folder and all of its contents from Git history, by adding the following in the ``.gitignore`` file:
-               
-            .. code-block:: text
+Run ``repo2data`` inside your notebook and get the path to the data.
 
-                 data/
+.. code-block:: shell
+
+  # install the data if running locally, or points to cached data if running on neurolibre
+  data_req_path = os.path.join("..", "binder", "data_requirement.json")
+  # download data
+  repo2data = Repo2Data(data_req_path)
+  data_path = repo2data.install()
+
+.. seealso:: Check this `example for running repo2data <https://github.com/neurolibre/repo2data-caching>`_, agnostic to server data path.
 
 **Step 3 - Book build**
 
