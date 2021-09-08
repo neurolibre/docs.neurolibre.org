@@ -110,6 +110,13 @@ We expect to find all the submission material in a **public** GitHub repository 
 
     tensorflow==2.4.0
 
+  .. warning:: Starting from ``pip 21.2``, `the package resolver changed its behaviour <https://pip.pypa.io/en/stable/user_guide/#changes-to-the-pip-dependency-resolver-in-20-3-2020>`_ to reduce inconsistencies in software versions.
+            As a consequence and if your submission has lot of interdependent dependencies, your build may a while.
+            This is typically the case if you see messages like this during the build:
+              .. code-block:: text
+
+                INFO: pip is looking at multiple versions of linkify-it-py to determine which version is compatible with other requirements. This could take a while.
+
 .. topic:: 3 - NeuroLibre dependencies
 
   Our test server creates a virtual environment in which your content is re-executed to build a Jupyter Book. To enable this, we need some 
