@@ -110,7 +110,7 @@ We expect to find all the submission material in a **public** GitHub repository 
 
     tensorflow==2.4.0
 
-  .. warning:: Starting from ``pip 21.2``, `the package resolver changed its behaviour <https://pip.pypa.io/en/stable/user_guide/#changes-to-the-pip-dependency-resolver-in-20-3-2020>`_ to reduce inconsistencies in software versions.
+  .. warning:: Starting from ``pip 20.3``, `the package resolver changed its behaviour <https://pip.pypa.io/en/stable/user_guide/#changes-to-the-pip-dependency-resolver-in-20-3-2020>`_ to reduce inconsistencies in software versions.
             As a consequence and if your submission has lot of interdependent dependencies, your build may a while.
             This is typically the case if you see messages like this during the build:
               .. code-block:: text
