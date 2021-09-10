@@ -166,8 +166,8 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
 
 
 .. warning:: 
-  RoboNeuro may fail downloading relatively large datasets (**exceeding 5GB**) as the book build process times out in 60 minutes.
-  If you have data that exceed 5GB, please create an issue in your github repository so a Neurolibre admin can check it.
+  RoboNeuro may fail downloading relatively large datasets (**exceeding 1GB**) or if the data server is to slow, as the book build process times out after 10 minutes. This is because of some limitations, independent from us, in our software stack.
+  If you face some problems when downloading your data, please create an issue in your github repository so a Neurolibre admin can check it.
 
 .. topic:: Help RoboNeuro find your data during book build
 
