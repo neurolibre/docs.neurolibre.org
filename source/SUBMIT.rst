@@ -136,6 +136,9 @@ We expect to find all the submission material in a **public** GitHub repository 
 
     FROM neurolibre/book:latest
     ...
+    
+  .. warning:: Make sure that your whole environment is not too big (>1GB of installed dependencies), especially if you are using a `Dockerfile`.
+      Large environments increase the binder spawn time, impact your computing performance, and takes a lot of space on our servers.
 
 **💽 Data**
 ----
