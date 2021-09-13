@@ -64,6 +64,9 @@ We expect to find all the submission material in a **public** GitHub repository 
 | ├── paper.md
 | └── paper.bib
 
+  .. warning:: If RoboNeuro does not see this file layout, it will fail to build the jupyter book build (but may be able to build the computing environment).
+              Make sure that your file layout never change during runtime (especially if using a Dockerfile).
+
 📁 The ``binder`` folder
 """"""""""""""""""""""""""
 
@@ -143,9 +146,9 @@ We expect to find all the submission material in a **public** GitHub repository 
 **💽 Data**
 ----
 
-NeuroLibre offers generous data storage and caching to supercharge your preprint. If your executable content consumes input data, please read this section carefully.
+NeuroLibre offers generous data storage and caching to supercharge your preprint. If your executable content consumes input data, you need to read this section carefully. Indeed, we don't allow data download other than through our method.
 
-To download data, NeuroLibre looks for a `repo2data <https://github.com/SIMEXP/Repo2Data>`_ configuration file: ``data_requirement.json``. 
+To download data, NeuroLibre looks for a `repo2data <https://github.com/SIMEXP/Repo2Data>`_ configuration file: ``data_requirement.json``.
 This file must point to a **publicly available dataset**, so it can be available during preprint runtime.
 
 .. seealso:: **Repo2data** can download data from several resources including OSF, datalad, zenodo or aws. For details, please visit `the documentation <https://github.com/SIMEXP/Repo2Data>`_.
@@ -162,8 +165,6 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
      - `neurolibre/repo2data-nilearn <https://github.com/neurolibre/repo2data-caching>`_
    * - OSF
      - `neurolibre/repo2data-osf <https://github.com/neurolibre/neurolibre-osf-test>`_
-
-
 
 .. warning:: 
   RoboNeuro may fail downloading relatively large datasets (**exceeding 1GB**) or if the data server is to slow, as the book build process times out after 10 minutes. This is because of some limitations, independent from us, in our software stack.
