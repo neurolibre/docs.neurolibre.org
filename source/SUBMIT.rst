@@ -113,6 +113,9 @@ We expect to find all the submission material in a **public** GitHub repository 
 
     tensorflow==2.4.0
 
+  .. warning:: Make sure as much as possible that your whole environment is not too big (<1GB of installed dependencies), and installation is fast (<10min).
+      Large environments increase the binder spawn time, impact your computing performance, and takes a lot of space on our servers.
+
   .. warning:: Starting from ``pip 20.3``, `the package resolver changed its behaviour <https://pip.pypa.io/en/stable/user_guide/#changes-to-the-pip-dependency-resolver-in-20-3-2020>`_ to reduce inconsistencies in software versions.
             As a consequence and if your submission has lot of interdependent dependencies, your build may a while.
             This is typically the case if you see messages like this during the build:
@@ -132,13 +135,13 @@ We expect to find all the submission material in a **public** GitHub repository 
     jupyter-book
     jupytext
     
-  .. warning:: Make sure as much as possible that your whole environment is not too big (>1GB of installed dependencies).
-      Large environments increase the binder spawn time, impact your computing performance, and takes a lot of space on our servers.
+  .. tip:: If your binder build fails with timeout errors, this is because your environment is too complex and slow to build.
+      But thanks to Docker internal caching mechanism, you can still re-try to submit the same repository so it continues to build.
 
-.. topic:: Additionnal instructions for Dockerfile
+.. topic:: Best practices when using Dockerfiles
 
   While Neurolibre can build a Dockerfile environment, we don't recommend it as this can be a source of lot of erros during build.
-  If you don't have choice, please make sur to follow these specific instructions:
+  If you don't have choice, please make sure to follow these specific instructions:
 
   1. We recommend that you use our base image to help you build your Dockerfile for Neurolibre:
 
@@ -153,6 +156,8 @@ We expect to find all the submission material in a **public** GitHub repository 
   3. DO NOT install data into the docker image, you should use repo2data for that (see next section).
 
   4. Make sure to keep the directory layout the same as your github repository. Modifying this layout in the Dockerfile is a high source of RoboNeuro build errors.
+
+  .. seealso:: You can also check the `Dockerfile instructions for binderhub <https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html>`_.
 
 **💽 Data**
 ----
