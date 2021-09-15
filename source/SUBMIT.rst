@@ -131,17 +131,28 @@ We expect to find all the submission material in a **public** GitHub repository 
 
     jupyter-book
     jupytext
-
-  - If your environment is described by a ``Dockerfile`` you can use our base image: 
-
-  .. code-block:: docker
-    :emphasize-lines: 1
-
-    FROM neurolibre/book:latest
-    ...
     
-  .. warning:: Make sure that your whole environment is not too big (>1GB of installed dependencies), especially if you are using a `Dockerfile`.
+  .. warning:: Make sure as much as possible that your whole environment is not too big (>1GB of installed dependencies).
       Large environments increase the binder spawn time, impact your computing performance, and takes a lot of space on our servers.
+
+.. topic:: Additionnal instructions for Dockerfile
+
+  While Neurolibre can build a Dockerfile environment, we don't recommend it as this can be a source of lot of erros during build.
+  If you don't have choice, please make sur to follow these specific instructions:
+
+  1. We recommend that you use our base image to help you build your Dockerfile for Neurolibre:
+
+    .. code-block:: docker
+      :emphasize-lines: 1
+
+      FROM neurolibre/book:latest
+      ...
+
+  2. Using a Dockerfile will tend to increase the size and complexity of your environment. Make sure to have layers (``RUN`` command) that do not exceed 1GB to help the build and push process.
+
+  3. DO NOT install data into the docker image, you should use repo2data for that (see next section).
+
+  4. Make sure to keep the directory layout the same as your github repository. Modifying this layout in the Dockerfile is a high source of RoboNeuro build errors.
 
 **💽 Data**
 ----
