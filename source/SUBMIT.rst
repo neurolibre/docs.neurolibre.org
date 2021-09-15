@@ -153,11 +153,17 @@ We expect to find all the submission material in a **public** GitHub repository 
 
   2. Using a Dockerfile will tend to increase the size and complexity of your environment. Make sure to have layers (``RUN`` command) that do not exceed 1GB to help the build and push process.
 
-  3. DO NOT install data into the docker image, you should use repo2data for that (see next section).
+  3. Keep the directory layout the same as your github repository. Modifying this layout in the Dockerfile is a high source of RoboNeuro build errors. For example, you should not:
 
-  4. Make sure to keep the directory layout the same as your github repository. Modifying this layout in the Dockerfile is a high source of RoboNeuro build errors.
+    .. code-block:: docker
+      :emphasize-lines: 1
 
-  .. seealso:: You can also check the `Dockerfile instructions for binderhub <https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html>`_.
+      RUN git clone bad_layout && cd bad_layout
+      WORKDIR bad_layout
+
+  4. DO NOT install and download data into the docker image, check the `data section <#data>`_ for that.
+
+  .. seealso:: Read the `Dockerfile instructions for binderhub <https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html>`_ for more information.
 
 **💽 Data**
 ----
