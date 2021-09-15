@@ -21,8 +21,6 @@ Jupyter Notebooks and Markdown files into publishable content.
 Providing online-executable runtimes and a powerful data caching system, NeuroLibre makes a **groundbreaking preprint
 server where you can plant the seeds of living publications.**
 
-.. seealso:: Before submitting: please read our `submission guidelines <https://docs.neurolibre.com/en/latest/SUBMIT.html>`_.
-
 As an author and before submitting, you:
 
 1. Create a github repository with notebooks that you would like to share.
