@@ -54,7 +54,7 @@ Run ``repo2data`` inside your notebook and get the path to the data.
 
 .. seealso:: Check this `example for running repo2data <https://github.com/neurolibre/repo2data-caching>`_, agnostic to server data path.
 
-1. Book build
+3. Book build
 :::::::::::::
 
 - Navigate to the repository location in a terminal

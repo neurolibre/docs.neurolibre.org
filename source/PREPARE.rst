@@ -49,7 +49,7 @@ Computation and data requirements
 :::::::::::::::::::::::::::::::::
 
 NeuroLibre strives to provides the best experience by giving access to lot of ressources, still we have limited hardware.
-Taking ressources constrains into account, and each submission should:
+Taking ressources constrains into account, each submission should:
 
 * not take more than 8hours to execute uncached (that includes all notebooks and build)
 * use 1 or 2 CPU@3GHz
