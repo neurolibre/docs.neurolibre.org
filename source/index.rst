@@ -4,7 +4,11 @@
    :maxdepth: 2
    :caption: Submission guidelines
 
+   PREPARE
+   TEST_SUBMISSION
    SUBMIT
+   SUBMISSION_STRUCTURE
+   LOCAL_TESTING
 
 .. toctree::
    :maxdepth: 2
