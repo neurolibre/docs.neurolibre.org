@@ -1,3 +1,5 @@
+.. warning:: NeuroLibre is at an alpha stage of development, and is not currently open for submissions.
+
 1. Prepare submission
 =====================
 
@@ -65,8 +67,3 @@ Repository layout
 :::::::::::::::::
 
 (link to repository structure with all informations)
-
-Local testing
-:::::::::::::
-
-Additionnally: (link to local testing with jupyter book)

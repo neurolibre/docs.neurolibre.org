@@ -1,3 +1,5 @@
+.. warning:: NeuroLibre is at an alpha stage of development, and is not currently open for submissions.
+
 Preprint repository structure
 ================================
 
