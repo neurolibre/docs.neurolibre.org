@@ -41,5 +41,3 @@ where you point RoboNeuro to a public GitHub repository, enter your email addres
 
 Debugging for long NeuroLibre submission
 ::::::::::::::::::::::::::::::::::::::::
-
-....
