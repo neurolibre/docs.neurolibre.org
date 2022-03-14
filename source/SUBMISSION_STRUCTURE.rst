@@ -6,19 +6,46 @@ Preprint repository structure
 We expect to find all the submission material in a **public** GitHub repository that has the following structure:
 
 | neurolibre_submission
-| ├── **/binder**
-| │   ├── data_requirement.json
+| .
+| ├── binder
 | │   ├── requirements.txt
-| │   └── ...
-| ├── **/content**
+| │   └── (data_requirement.json)
+| │
+| ├── content
 | │   ├── _toc.yml
 | │   ├── _config.yml
-| │   └── ...
+| │   ├── 01-simple_notebook.ipynb
+| │   └── (...)
 | ├── paper.md
 | └── paper.bib
 
   .. warning:: If RoboNeuro does not see this file layout, it will fail to build the jupyter book build (but may be able to build the computing environment).
               Make sure that your file layout never change during runtime (especially if using a Dockerfile).
+
+⏩ Quickstart: Preprint templates
+:::::::::::::::::::::::::::::::::
+
+To give you a head-start, we created preprint template repositories:
+
+.. list-table::
+   :widths: 33 33 33
+   :header-rows: 1
+
+   * - Preprint
+     - Programming language
+     - GitHub repository
+   * - Link
+     - Python
+     - `neurolibre/template <https://github.com/neurolibre/template>`_
+   * - Link
+     - C++
+     - `neurolibre/cpp <https://github.com/neurolibre/binder-cpp>`_
+
+1. Choose your template from the list below and create a new repository into your (or to an organization) account.
+2. Follow the instructions in the ``README`` file.
+3. Test your book build using `RoboNeuro preview service <https://roboneuro.herokuapp.com>`_.
+
+The following section provides further detail about the structure of a NeuroLibre preprint repository. 
 
 1. The ``binder`` folder
 ::::::::::::::::::::::::

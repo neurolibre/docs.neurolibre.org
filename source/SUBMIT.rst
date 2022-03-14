@@ -1,6 +1,6 @@
 .. warning:: NeuroLibre is at an alpha stage of development, and is not currently open for submissions.
 
-3. SUBMIT
+3. Submit
 =========
 
 .. warning:: **A successful book build on RoboNeuro preview service is a prerequisite for submission.**

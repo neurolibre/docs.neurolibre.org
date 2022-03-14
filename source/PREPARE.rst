@@ -48,7 +48,24 @@ Check the following minimalistic example of a jupyter notebook.
 Repository layout
 :::::::::::::::::
 
-(link to repository structure with all informations)
+Our infrastructure heavily relies on `binderhub <https://binderhub.readthedocs.io/en/latest/>`_ for the interactive compute environment, and 
+`jupyter book <https://jupyterbook.org/intro.html>`_ for the publishing pdf artifact.
+The backend workflow make use of those dependencies to build your submission and make the data accessible.
+
+You need to make sure that you have all the following files ready:
+
+.. raw:: html
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"> <a href="https://mybinder.readthedocs.io/en/latest/using/config_files.html#requirements-txt-install-a-python-environment">Binder requirement file</a><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"> (if applicable) <a href="https://github.com/SIMEXP/Repo2Data#input">Data requirement file</a><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"> <a href="https://jupyterbook.org/customize/config.html">Jupyter book configuration</a><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"> <a href="https://github.com/neurolibre/template/blob/main/content/01-simple_notebook.ipynb">Notebook files</a><br><br>
+
+
+To help you build your submission layout, you can find some template repository that can give you a quickstart: https://docs.neurolibre.org/en/latest/SUBMIT.html#quickstart-preprint-templates
+
+We also encourage you to check the specific detailed section on the submission layout, it includes more information on how to 
+`fill and structure your github repository <SUBMISSION_STRUCTURE.html>`_.
 
 Computation and data requirements
 :::::::::::::::::::::::::::::::::
