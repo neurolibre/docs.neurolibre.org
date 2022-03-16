@@ -4,13 +4,23 @@
    :maxdepth: 2
    :caption: Submission guidelines
 
+   PREPARE
+   TEST_SUBMISSION
    SUBMIT
+   SUBMISSION_STRUCTURE
+   LOCAL_TESTING
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Reader
+
+   READER
 
 .. toctree::
    :maxdepth: 2
    :caption: Technical screening
 
-   REVIEWER
+   REVIEWER.md
 
 .. toctree::
    :maxdepth: 2
@@ -21,3 +31,8 @@
    BAREMETAL_TO_DOCKER_REGISTRY
    BINDERHUB_TEST_MODE
 
+.. toctree::
+   :maxdepth: 2
+   :caption: FAQ
+
+   FAQ
