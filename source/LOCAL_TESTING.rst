@@ -1,14 +1,14 @@
 .. warning:: NeuroLibre is at an alpha stage of development, and is not currently open for submissions.
 
-Local testing
-=============
+🖱️ Local testing
+================
 
 Assuming that:
 
-- you already installed all the dependencies to develop your notebooks locally 
-- your preprint repository follows the `NeuroLibre preprint structure <#preprint-repository-structure>`_
+* you already installed all the dependencies to develop your notebooks locally 
+* your preprint repository follows the NeuroLibre :doc:`SUBMISSION_STRUCTURE`.
 
-you can easily test your preprint build locally.
+You can easily test your preprint build locally.
 
 1. Install Jupyter Book
 :::::::::::::::::::::::

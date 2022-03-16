@@ -1,26 +1,28 @@
 .. warning:: NeuroLibre is at an alpha stage of development, and is not currently open for submissions.
 
-Preprint repository structure
+🗂 Preprint repository structure
 ================================
 
 We expect to find all the submission material in a **public** GitHub repository that has the following structure:
 
-| neurolibre_submission
 | .
-| ├── binder
-| │   ├── requirements.txt
-| │   └── (data_requirement.json)
+| ├── `binder <#the-binder-folder>`_
+| │   ├── `requirements.txt <https://mybinder.readthedocs.io/en/latest/using/config_files.html#requirements-txt-install-a-python-environment>`_
+| │   └── (`data_requirement.json <https://github.com/SIMEXP/Repo2Data#input>`_)
 | │
-| ├── content
-| │   ├── _toc.yml
-| │   ├── _config.yml
-| │   ├── 01-simple_notebook.ipynb
+| ├── `content <#the-content-folder>`_
+| │   ├── `_toc.yml <https://jupyterbook.org/structure/toc.html>`_
+| │   ├── `_config.yml <https://jupyterbook.org/customize/config.html>`_
+| │   ├── `01-simple_notebook.ipynb <https://github.com/neurolibre/repo2data-caching/blob/master/notebooks/nilearn-example.ipynb>`_
 | │   └── (...)
-| ├── paper.md
-| └── paper.bib
+| ├── `paper.md <#static-summary>`_
+| └── `paper.bib <#static-summary>`_
 
-  .. warning:: If RoboNeuro does not see this file layout, it will fail to build the jupyter book build (but may be able to build the computing environment).
-              Make sure that your file layout never change during runtime (especially if using a Dockerfile).
+Our meta anlaysis on myelin submission which is publically available `in this github repository <https://github.com/Notebook-Factory/myelin-meta-analysis>`_ should help you understand the layout.
+
+.. warning:: If RoboNeuro does not see this file layout, it will fail to build the jupyter book build (but may be able to build the computing environment).
+            Make sure that your file layout never change during runtime (especially if using a Dockerfile).
+
 
 ⏩ Quickstart: Preprint templates
 :::::::::::::::::::::::::::::::::
@@ -41,13 +43,14 @@ To give you a head-start, we created preprint template repositories:
      - C++
      - `neurolibre/cpp <https://github.com/neurolibre/binder-cpp>`_
 
+To use them, make sure to read the following steps:
+
 1. Choose your template from the list below and create a new repository into your (or to an organization) account.
 2. Follow the instructions in the ``README`` file.
-3. Test your book build using `RoboNeuro preview service <https://roboneuro.herokuapp.com>`_.
 
 The following section provides further detail about the structure of a NeuroLibre preprint repository. 
 
-1. The ``binder`` folder
+1. 📁 The ``binder`` folder
 ::::::::::::::::::::::::
 
 .. image:: https://github.com/neurolibre/brand/blob/main/png/binder_folder.png?raw=true
@@ -55,11 +58,11 @@ The following section provides further detail about the structure of a NeuroLibr
   :align: left
                   
 
-1.1 Runtime
+1.1 ⚙️ Runtime
 -----------
 
-Preprint-specific runtime dependencies
-......................................
+1.1.1 Preprint-specific runtime dependencies
+............................................
 
   The execution runtime can be based on any of the (non-proprietary) programming languages supported by Jupyter. NeuroLibre looks at the
   ``binder`` folder to find some configuration files such as a ``requirements.txt`` (Python), ``R.install`` (R), ``Project.toml`` (Julia)
@@ -68,8 +71,8 @@ Preprint-specific runtime dependencies
 .. seealso:: 
   The full list of supported configuration files is available `here <https://mybinder.readthedocs.io/en/latest/using/config_files.html>`_.
 
-Environment configuration for NeuroLibre
-........................................
+1.1.2 Environment configuration for NeuroLibre
+..............................................
 
   You should try to make your environment clean and concize, that is why the prefered configuration file for NeuroLibre are the
   ``requirements.txt``.
@@ -102,8 +105,8 @@ Environment configuration for NeuroLibre
 
                 INFO: pip is looking at multiple versions of linkify-it-py to determine which version is compatible with other requirements. This could take a while.
 
-NeuroLibre dependencies
-.......................
+1.1.3 NeuroLibre dependencies
+.............................
 
   Our test server creates a virtual environment in which your content is re-executed to build a Jupyter Book. To enable this, we need some 
   Python packages.
@@ -126,8 +129,8 @@ NeuroLibre dependencies
   .. warning:: Make sure that your whole environment is not too big (>1GB of installed dependencies), especially if you are using a `Dockerfile`.
       Large environments increase the binder spawn time, impact your computing performance, and takes a lot of space on our servers.
 
-1.2 Data
---------
+1.2 💽 Data
+-----------
 
 NeuroLibre offers generous data storage and caching to supercharge your preprint. If your executable content consumes input data, you need to read this section carefully. Indeed, we don't allow data download other than through our method.
 
@@ -189,8 +192,8 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
 .. warning:: If you are a Windows user, manually defined paths (e.g. ``.\data\my_data.txt``) won't be recognized by the preprint runtime.
              Please use an operating system agnostic convention to define paths, like ``os.path.join`` in Python.
         
-2. The ``content`` folder
-:::::::::::::::::::::::::
+2. 📁 The ``content`` folder
+::::::::::::::::::::::::::::
 
 .. image:: https://github.com/neurolibre/brand/blob/main/png/content_folder.png?raw=true
   :width: 800
@@ -210,14 +213,16 @@ NeuroLibre accepts the following file types to create a preprint that is beyond 
 
 .. note:: ✅  You can organize your content in sub-folders.
 
-.. topic:: Writing narrative content
+2.1.1 Writing narrative content
+...............................
    
    Jupyter Book provides you with an arsenal of authoring tools to include citations, equations, figures, special content
    blocks and more into your notebooks or markdown files.
   
   .. seealso:: Please visit the corresponding Jupyter Book `documentation page <https://jupyterbook.org/content/index.html#write-narrative-content>`_ for guidelines.
 
-.. topic:: Writing executable content
+2.1.2 Writing executable content
+................................
 
    Based on the powerful Jupyter ecosystem, NeuroLibre preprints allow you to interleave computational material with your narrative.
    You can add some directives and metadata to your code cell blocks for Jupyter Book to determine the format and behavior of the outputs,
@@ -228,16 +233,16 @@ NeuroLibre accepts the following file types to create a preprint that is beyond 
 There are two **mandatory** files that we look for in the ``content`` folder: ``_config.yml`` and ``_toc.yml``. These files 
 help RoboNeuro structure your book and configure some settings.
 
-2.2 Table of contents
----------------------
+2.2 ⑆ Table of contents
+-----------------------
 
 The ``_toc.yml`` file determines the structure of your NeuroLibre preprint. It is a simple configuration file 
 specifying a table of content from all the executable & narrative content found in the ``content`` folder (and in subfolders).
 
 .. seealso:: The complete reference for the ``_toc.yml`` can be found `here <https://jupyterbook.org/customize/toc.html>`_.
 
-2.3 Book configuration
-----------------------
+2.3 ⚡︎ Book configuration
+------------------------
 
 The ``_config.yml`` file governs all the configuration options for your Jupyter Book formatted preprint, such as adding a logo, 
 enable/disable interactive buttons or control notebook execution and caching settings. Few important points:
@@ -258,8 +263,8 @@ enable/disable interactive buttons or control notebook execution and caching set
 
 .. seealso:: The complete reference for the ``_config.yml`` can be found `here <https://jupyterbook.org/customize/config.html>`_.
 
-3. Static summary
-:::::::::::::::::
+3. 📝 Static summary
+::::::::::::::::::::
 
 .. image:: https://github.com/neurolibre/brand/blob/main/png/paper.png?raw=true
   :width: 800
