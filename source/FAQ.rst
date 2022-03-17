@@ -25,7 +25,7 @@ You need use less than ~7.5GB of RAM, take less than 10GB runtime storage and no
 I want to contribute, how can I do that ?
 :::::::::::::::::::::::::::::::::::::::::
 It would be a pleasure to include external people on our project, please reach out to us via our `mattermost brainhack forum <https://mattermost.brainhack.org>`_ or #TODO:EMAIL!
-There are fundamentally two ways to contribute to NeuroLibre: as a `reviewer <REVIEWER>`_ or as a `developper <BAREMETAL_TO_BINDERHUB>`_.
+There are fundamentally two ways to contribute to NeuroLibre: as a `reviewer <REVIEWER.html>`_ or as a `developper <INFRASTRUCTURE.html>`_.
 
 The reviewer team is in charge of checking if submissions execute ok on our servers, there are also exchanging with the author to help them improve it.
 Developer team works on the binderhub administration, backend workflows and frontend (including github integrations, and JOSS website template).
@@ -42,7 +42,7 @@ This includes basic formatting, and checking if code executes.
 How do I manage datasets with NeuroLibre ?
 ::::::::::::::::::::::::::::::::::::::::::
 We use `repo2data <https://github.com/SIMEXP/Repo2Data>`_ to manage input data, and cache.
-For more information please check `the data related section <SUBMISSION_STRUCTURE#data>`.
+For more information please check `the data related section <SUBMISSION_STRUCTURE.html#data>`_.
 
 Which version of ``jupyter-book`` and ``repo2data`` should I use ?
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -58,5 +58,5 @@ Then follow the information about jupter-book caching `here <https://jupyterbook
 Can I use Dockerfile for my submission ?
 ::::::::::::::::::::::::::::::::::::::::
 As highlghted in our documentation, we don't recommend building with Dockerfiles.
-However if you don't have choice, you can check our section :doc:`SUBMISSION_STRUCTURE.html#environment-configuration-for-neurolibre,
+However if you don't have choice, you can check `our section <SUBMISSION_STRUCTURE.html#environment-configuration-for-neurolibre>`_,
 and more specifically `binder with Dockerfile instructions <https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html>`_.
