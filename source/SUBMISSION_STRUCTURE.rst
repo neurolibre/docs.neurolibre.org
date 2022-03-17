@@ -152,6 +152,7 @@ If you are using configuration files, we need latest version of ``jupyter-book``
 
   jupyter-book
   jupytext
+  (if applicable) repo2data
 
 1.2 💽 Data
 -----------
@@ -286,9 +287,16 @@ enable/disable interactive buttons or control notebook execution and caching set
    repository:
      url: https://github.com/username/reponame  # The URL to your repository
 
+- By default NeuroLibre force the notebook execution, still make sure you have it enabled.
+
+  .. code-block:: yaml
+
+    execute:
+      execute_notebooks: force
+
 .. seealso:: The complete reference for the ``_config.yml`` can be found `here <https://jupyterbook.org/customize/config.html>`_.
 
-3. 📝 Static summary
+1. 📝 Static summary
 ::::::::::::::::::::
 
 .. image:: https://github.com/neurolibre/brand/blob/main/png/paper.png?raw=true
