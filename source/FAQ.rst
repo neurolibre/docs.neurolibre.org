@@ -49,3 +49,8 @@ Which version of ``jupyter-book`` and ``repo2data`` should I use ?
 We always recommend latest versions for better compatibility.
 For ``jupyter-book`` you are free to use any version you like, since we rely only on the compiled artifcats.
 For ``repo2data``, we highly advice to match latest verison because this is what is used on the backend.
+
+How can I cache my experiments ?
+::::::::::::::::::::::::::::::::
+If you have some cache data, you can use ``repo2data`` to make the data available on NeuroLibre.
+Then follow the information about jupter-book caching `here <https://jupyterbook.org/content/execute.html?highlight=execute#execute-and-cache-your-pages>`_.
