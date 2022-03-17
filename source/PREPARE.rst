@@ -69,7 +69,7 @@ Either way you need to make sure that you have all the following files ready:
 
 .. seealso:: Take a look at our meta anlaysis on myelin submission which is publically available `in this github repository <https://github.com/Notebook-Factory/myelin-meta-analysis>`_.
 
-📡 Computation and data requirements
+💽 Computation and data requirements
 ::::::::::::::::::::::::::::::::::::
 
 NeuroLibre strives to provides the best experience by giving access to lot of ressources, still we have limited hardware.
