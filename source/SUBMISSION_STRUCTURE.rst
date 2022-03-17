@@ -146,7 +146,7 @@ On the other hand, this one is concise, reproducible and will take much less tim
 Our test server creates a virtual environment in which your content is re-executed to build a Jupyter Book. To enable this, we need some 
 Python packages.
 
-If you are using configuration files, we need the following in a ``requirements.txt`` file:
+If you are using configuration files, we need latest version of ``jupyter-book`` in a ``requirements.txt`` file:
 
 .. code-block:: text
 
