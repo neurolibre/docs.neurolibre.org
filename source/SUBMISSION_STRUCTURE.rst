@@ -51,7 +51,7 @@ To use them, make sure to read the following steps:
 The following section provides further detail about the structure of a NeuroLibre preprint repository. 
 
 1. 📁 The ``binder`` folder
-::::::::::::::::::::::::
+:::::::::::::::::::::::::::
 
 .. image:: https://github.com/neurolibre/brand/blob/main/png/binder_folder.png?raw=true
   :width: 800
@@ -59,14 +59,14 @@ The following section provides further detail about the structure of a NeuroLibr
                   
 
 1.1 ⚙️ Runtime
------------
+-------------
 
 1.1.1 Preprint-specific runtime dependencies
 ............................................
 
-  The execution runtime can be based on any of the (non-proprietary) programming languages supported by Jupyter. NeuroLibre looks at the
-  ``binder`` folder to find some configuration files such as a ``requirements.txt`` (Python), ``R.install`` (R), ``Project.toml`` (Julia)
-  or a ``Dockerfile``.
+The execution runtime can be based on any of the (non-proprietary) programming languages supported by Jupyter. NeuroLibre looks at the
+``binder`` folder to find some configuration files such as a ``requirements.txt`` (Python), ``R.install`` (R), ``Project.toml`` (Julia)
+or a ``Dockerfile``.
 
 .. seealso:: 
   The full list of supported configuration files is available `here <https://mybinder.readthedocs.io/en/latest/using/config_files.html>`_.
@@ -74,60 +74,84 @@ The following section provides further detail about the structure of a NeuroLibr
 1.1.2 Environment configuration for NeuroLibre
 ..............................................
 
-  You should try to make your environment clean and concize, that is why the prefered configuration file for NeuroLibre are the
-  ``requirements.txt``.
+You should try to make your environment clean and concize, that is why the prefered configuration file for NeuroLibre are the
+``requirements.txt``.
 
-  It should be small (to keep environment building and loading as short as possible), and versionnized (so your
-  environment is fully reproducible, and cache-able).
+It should be small (to keep environment building and loading as short as possible), and versionnized (so your
+environment is fully reproducible, and cache-able).
 
-  For example this requirement is bad because it has lot of unnecessary dependencies:
+For example this requirement is bad because it has lot of unnecessary dependencies:
 
-  .. code-block:: text
+.. code-block:: text
 
-    numpy
-    scipy
-    jupyter
-    matplotlib
-    Pillow
-    scikit-learn
-    tensorflow
+  numpy
+  scipy
+  jupyter
+  matplotlib
+  Pillow
+  scikit-learn
+  tensorflow
 
-  On the other hand, this one is concise, reproducible and will take much less time to build:
+On the other hand, this one is concise, reproducible and will take much less time to build:
 
-  .. code-block:: text
+.. code-block:: text
 
-    tensorflow==2.4.0
+  scikit-learn==0.16.1
+  tensorflow==2.4.0
 
-  .. warning:: Starting from ``pip 20.3``, `the package resolver changed its behaviour <https://pip.pypa.io/en/stable/user_guide/#changes-to-the-pip-dependency-resolver-in-20-3-2020>`_ to reduce inconsistencies in software versions.
-            As a consequence and if your submission has lot of interdependent dependencies, your build may a while.
-            This is typically the case if you see messages like this during the build:
-              .. code-block:: text
+.. warning:: Starting from ``pip 20.3``, `the package resolver changed its behaviour <https://pip.pypa.io/en/stable/user_guide/#changes-to-the-pip-dependency-resolver-in-20-3-2020>`_ to reduce inconsistencies in software versions.
+          As a consequence and if your submission has lot of interdependent dependencies, your build may take a while.
+          This is typically the case if you see messages like this during the build:
+            
+            .. code-block:: text
 
-                INFO: pip is looking at multiple versions of linkify-it-py to determine which version is compatible with other requirements. This could take a while.
+              INFO: pip is looking at multiple versions of linkify-it-py to determine which version is compatible with other requirements. This could take a while.
+
+.. warning:: Make sure that your whole environment is not too big (<1GB of installed dependencies), and installation is fast (<10min). 
+  Large environments increase the binder spawn time, impact your computing performance, and takes a lot of space on our servers.
+
+.. tip:: If your binder build fails with timeout errors, this is because your environment is too complex and slow to build.
+  But thanks to Docker internal caching mechanism, you can still re-try to submit the same repository so it catch-up the build.
+
+.. topic:: Best practices when using Dockerfiles
+  
+  While Neurolibre can build a Dockerfile environment, we don't recommend it as this can be a source of lot of erros during build.
+  If you don't have choice, please make sure to follow these specific instructions:
+
+  1. We recommend that you use our base image to help you build your Dockerfile for Neurolibre:
+
+    .. code-block:: docker
+      :emphasize-lines: 1
+
+      FROM neurolibre/book:latest
+      ...
+
+  2. Using a Dockerfile will tend to increase the size and complexity of your environment. Make sure to have layers (``RUN`` command) that do not exceed 1GB to help the build and push process.
+
+  3. Keep the directory layout the same as your github repository. Modifying this layout in the Dockerfile is a high source of RoboNeuro build errors. For example, you should not:
+
+    .. code-block:: docker
+      :emphasize-lines: 1
+
+      RUN git clone bad_layout && cd bad_layout
+      WORKDIR bad_layout
+
+  4. DO NOT install and download data into the docker image, check the `data section <#data>`_ for that.
+
+  .. seealso:: Read the `Dockerfile instructions for binderhub <https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html>`_ for more information.
 
 1.1.3 NeuroLibre dependencies
 .............................
 
-  Our test server creates a virtual environment in which your content is re-executed to build a Jupyter Book. To enable this, we need some 
-  Python packages.
+Our test server creates a virtual environment in which your content is re-executed to build a Jupyter Book. To enable this, we need some 
+Python packages.
 
-  - If you are using configuration files, we need the following in a ``requirements.txt`` file:
+If you are using configuration files, we need the following in a ``requirements.txt`` file:
 
-  .. code-block:: text
+.. code-block:: text
 
-    jupyter-book
-    jupytext
-
-  - If your environment is described by a ``Dockerfile`` you can use our base image: 
-
-  .. code-block:: docker
-    :emphasize-lines: 1
-
-    FROM neurolibre/book:latest
-    ...
-    
-  .. warning:: Make sure that your whole environment is not too big (>1GB of installed dependencies), especially if you are using a `Dockerfile`.
-      Large environments increase the binder spawn time, impact your computing performance, and takes a lot of space on our servers.
+  jupyter-book
+  jupytext
 
 1.2 💽 Data
 -----------
@@ -153,7 +177,8 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
      - `neurolibre/repo2data-osf <https://github.com/neurolibre/neurolibre-osf-test>`_
 
 .. warning:: 
-  RoboNeuro may fail downloading relatively large datasets (**exceeding 1GB**) or if the data server is to slow, as the book build process times out after 10 minutes. This is because of some limitations, independent from us, in our software stack.
+  RoboNeuro may fail downloading relatively large datasets (**exceeding 1GB**) or if the data server is to slow.
+  This is because of some limitations, independent from us, in our software stack.
   If you face some problems when downloading your data, please create an issue in your github repository so a Neurolibre admin can check it.
 
 .. topic:: Help RoboNeuro find your data during book build
@@ -192,7 +217,7 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
 .. warning:: If you are a Windows user, manually defined paths (e.g. ``.\data\my_data.txt``) won't be recognized by the preprint runtime.
              Please use an operating system agnostic convention to define paths, like ``os.path.join`` in Python.
         
-2. 📁 The ``content`` folder
+1. 📁 The ``content`` folder
 ::::::::::::::::::::::::::::
 
 .. image:: https://github.com/neurolibre/brand/blob/main/png/content_folder.png?raw=true

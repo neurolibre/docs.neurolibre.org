@@ -54,3 +54,9 @@ How can I cache my experiments ?
 ::::::::::::::::::::::::::::::::
 If you have some cache data, you can use ``repo2data`` to make the data available on NeuroLibre.
 Then follow the information about jupter-book caching `here <https://jupyterbook.org/content/execute.html?highlight=execute#execute-and-cache-your-pages>`_.
+
+Can I use Dockerfile for my submission ?
+::::::::::::::::::::::::::::::::::::::::
+As highlghted in our documentation, we don't recommend building with Dockerfiles.
+However if you don't have choice, you can check our section :doc:`SUBMISSION_STRUCTURE.html#environment-configuration-for-neurolibre,
+and more specifically `binder with Dockerfile instructions <https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html>`_.
