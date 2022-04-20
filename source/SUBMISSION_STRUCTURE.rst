@@ -59,7 +59,7 @@ The following section provides further detail about the structure of a NeuroLibr
                   
 
 1.1 ⚙️ Runtime
--------------
+--------------
 
 1.1.1 Preprint-specific runtime dependencies
 ............................................
@@ -178,7 +178,7 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
      - `neurolibre/repo2data-osf <https://github.com/neurolibre/neurolibre-osf-test>`_
 
 .. warning:: 
-  RoboNeuro may fail downloading relatively large datasets (**exceeding 1GB**) or if the data server is to slow.
+  RoboNeuro may fail downloading relatively large datasets (**exceeding 5GB**) or if the data server is to slow.
   This is because of some limitations, independent from us, in our software stack.
   If you face some problems when downloading your data, please create an issue in your github repository so a Neurolibre admin can check it.
 
@@ -195,6 +195,7 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
   .. code-block:: bash
 
     { "src": "download_my_brain(data_dir=_dst);",
+    "dataLayout": "neurolibre",
     "projectName": "PROJECT_NAME"}
 
 
@@ -214,10 +215,19 @@ Example preprint templates using ``repo2data`` for caching data on NeuroLibre se
       img = nib.load(os.path.join('..', '..', 'data', 'PROJECT_NAME', 'my_brain.nii.gz')) # In this case, 2 upper directories
 
   If the data directories in your code cells are not following this convention, RoboNeuro will fail to re-execute your notebooks and interrupt the book build.
+  
+  The best way to access data on Neurolibre servers is using the repo2data python api. This way all the data paths will be automatically recognized.
+  For example if you have a notebook in ``content/my_notebook.ipynb``:
 
-.. warning:: If you are a Windows user, manually defined paths (e.g. ``.\data\my_data.txt``) won't be recognized by the preprint runtime.
-             Please use an operating system agnostic convention to define paths, like ``os.path.join`` in Python.
-        
+    .. code-block:: python
+
+        from repo2data.repo2data import Repo2Data
+        # install the data if running locally, or points to cached data if running on neurolibre
+        data_req_path = os.path.join("..", "binder", "data_requirement.json")
+        # download data
+        repo2data = Repo2Data(data_req_path)
+        data_path = repo2data.install()
+
 1. 📁 The ``content`` folder
 ::::::::::::::::::::::::::::
 

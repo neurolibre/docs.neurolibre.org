@@ -9,9 +9,8 @@ Before submitting to Neurolibre there are several prerequisites that you must co
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"> <a href="#hosting">Hosting</a><br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"> <a href="#coding-language">Coding language</a><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"> <a href="#computation-and-data-requirements">Computation and data requirements</a><br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"> <a href="#repository-layout">Repository layout</a><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"> <a href="#local-testing">Local testing</a><br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"> <a href="#computation-and-data-requirements">Computation and data requirements</a><br>
 
 ------------
 

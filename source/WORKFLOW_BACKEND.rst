@@ -1,5 +1,14 @@
-The backend scripts were improved quite a bit, you can find the final script here: https://github.com/neurolibre/terraform-binderhub/blob/master/terraform-modules/binderhub/assets/jb_build.bash
-the nginx test (where the data lives) is at http://neurolibre-data.conp.cloud/book-artifacts/ (206.12.95.164), and API is at http://neurolibre-data.conp.cloud:8081/
-the nginx prod: http://neurolibre-data-prod.conp.cloud/book-artifacts/ (132.206.34.28) and API is at http://neurolibre-data-prod.conp.cloud:29876
-test is for build and temporary, prod is where all data should be served for an unlimited period
-working on the lookup table right now, will add a third script (after repo2data, jb_build) to the backend build "workflow" within binder: https://github.com/neurolibre/terraform-binderhub/blob/21e4ae860b2c71714362f378633326fc0f05728f/terraform-modules/binderhub/assets/config.yaml#L76 not sure yet where this table will be served, I will put it in http://neurolibre-data.conp.cloud/book-artifacts/lookup_table
+Submission workflow backend
+===========================
+
+The submission workflow backend has several components that are still not part of the terraform installation.
+It is divided into multiple parts:
+* the data server which serves the jupyter books
+* the python API to communicate with the bind, communicate with the API, archive and deal with DOIs.
+* front-end for the website design, forked from `JOSS <https://joss.theoj.org/>`_
+
+Data server and python API
+::::::::::::::::::::::::::
+
+You will find all instructions in the github repo: https://github.com/neurolibre/neurolibre-data-api
+It has two branches: ``main`` for the test server and ``prod`` for the production server.
