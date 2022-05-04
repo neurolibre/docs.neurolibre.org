@@ -18,8 +18,8 @@ You first need to prepare the necessary files that will be used later to install
 We are using `git-crypt <https://github.com/AGWA/git-crypt>`_ to encrypt our password files for the whole process, these can be uncrypted with the appropriate :code:`gitcrypt-key`.
 For the ssh authentication on the BinderHub  server, you have two choices : i) use neurolibre’s key (recommended) or ii) use your own ssh key.
 
-.. note:: You can request the :code:`gitcrypt-key` and :code:`neurolibre’s ssh key` to any infrastructure admin if authorized.
-.. warning:: You should never share the :code:`gitcrypt-key` and :code:`neurolibre’s ssh key` to anyone.
+.. note:: You can request the :code:`gitcrypt-key`, :code:`neurolibre’s ssh key`, :code:`cloudflare` and :code:`arbutus API keys` to any infrastructure admin if authorized.
+.. warning:: You should never share the aformentioned file to anyone.
 
 1. Create a folder on your local machine, which is later to be mounted to the Docker container for securely using your keys during spawning a BinderHub instance.
    Here, we will call it :code:`my-keys` for convenience:
@@ -74,7 +74,7 @@ Spawn a BinderHub instance using Docker
 ---------------------------------------
 
 To achieve this, you will instantiate a container (from the image you just pulled) mounted with specific volumes from your computer.
-You will be mounting two directories into the container: :code:`/my_keys` containing the files from :ref:`Pre-setup`, and :code:`/instance_name` containing the terraform recipe and artifacts.
+You will be mounting two directories into the container: :code:`/my_keys` containing the files from :ref:`Pre-setup`, and :code:`/instance_name` containing the terraform recipe, artifacts and API keys.
 
 .. warning:: The Docker container that you will run contain sensitive information (i.e. your ssh keys, passwords, etc), so never share it with anyone else.
              If you need to share information to another developer, share the Dockerfile and/or these instructions.
@@ -91,15 +91,22 @@ You will be mounting two directories into the container: :code:`/my_keys` contai
 
 .. note:: If you choose not to copy :code:`main.tf` file to this directory, you will be asked to fill out one manually during container runtime.
 
-2. Start the Docker container which is going to spawn the BinderHub instance:
+2. Now you can copy the cloudflare :code:`keys_cc.sh` and computecanada/arbutus :code:`*openrc.sh` API keys.
+
+   .. code-block:: console
+
+     cp PATH/TO/keys_cc.sh /home/$USER/instance-name/
+     cp PATH/TO/*openrc.sh /home/$USER/instance-name/
+
+3. Start the Docker container which is going to spawn the BinderHub instance:
 
    .. code-block:: console
 
      sudo docker run -v /home/$USER/my_keys:/tmp/.ssh -v /home/$USER/instance-name:/terraform-artifacts -it neurolibre-instance:v1.2
 
-3. Take a coffee and wait! The instance should be ready in 5~10 minutes.
+4. Take a coffee and wait! The instance should be ready in 5~10 minutes.
 
-4. For security measure, stop and delete the container that you used to span the instance:
+5. For security measure, stop and delete the container that you used to span the instance:
 
    .. code-block:: console
 
