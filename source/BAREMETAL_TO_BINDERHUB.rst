@@ -103,8 +103,10 @@ You will be mounting two directories into the container: :code:`/my_keys` contai
 
    .. code-block:: console
 
-     sudo docker stop conpdev/neurolibre-instance:v1.2
-     sudo docker rm conpdev/neurolibre-instance:v1.2
+     sudo docker stop conpdev/neurolibre-instance:v1.3
+     sudo docker rm conpdev/neurolibre-instance:v1.3
+
+If you need more information about this docker, check `the neurolibre repository <https://github.com/neurolibre/neurolibre-binderhub>`_.
 
 Appendix A
 ----------
