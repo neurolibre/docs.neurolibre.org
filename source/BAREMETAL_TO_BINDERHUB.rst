@@ -2,7 +2,7 @@ Bare-metal to BinderHub
 =======================
 
 Installation of the BinderHub  from bare-metal is fully automatic and reproducible through `terraform <https://www.terraform.io/>`_ configuration
-runned via `this <https://github.com/neurolibre/neurolibre-binderhub/blob/master/Dockerfile>`_ Docker container.
+runned using `this Docker container <https://github.com/neurolibre/neurolibre-binderhub/blob/master/Dockerfile>`_.
 
 The following is intended for neurolibre backend developpers, but can be read by anyone interrested in our process.
 It assumes that you have basic knowledge on using the command line on a remote server (bash, ssh authentification..).
@@ -68,7 +68,7 @@ You will install a trusted Docker image that will later be used to spawn the Bin
 
    .. code-block:: console
 
-     sudo docker pull conpdev/neurolibre-instance:v1.2
+     sudo docker pull conpdev/neurolibre-instance:v1.3
 
 Spawn a BinderHub instance using Docker
 ---------------------------------------
