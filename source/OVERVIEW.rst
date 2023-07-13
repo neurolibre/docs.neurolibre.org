@@ -27,7 +27,12 @@ all within the same execution runtime required for your analyses.
 
    https://doi.org/10.55458/neurolibre.00004
 
-Bird's eye view of NRP publication workflow
+   For further details on why moving beyond static text and illustrations is a central challenge for scientific publishing in the 21st century,
+   see the following perspective article by the NeuroLibre team (DuPre et al. 2022):
+
+   https://doi.org/10.1371/journal.pcbi.1009651 
+
+Bird's eye view of the NRP publication workflow
 -----------------
 
 .. sidebar:: 🚀 NRPs are dynamic
@@ -54,14 +59,16 @@ workflow, powered by the OpenJournals.
    NeuroLibre archives all the necessary reproducibility assets required to successfully build an NRP at the time of submission.
 
    NeuroLibre's production BinderHub, container registry, data storage, and web servers are reserved for the published NRPs, ensuring
-   the long-term functionality and accessibility. This makes NRPs Findable, Accessible, Interoperable, and Reusable.
+   the long-term functionality and accessibility.
+   
+   This makes NRPs Findable, Accessible, Interoperable, and Reusable.
 
 
 During the technical screening process, our editorial bot RoboNeuro and a screener works with you to ensure a successful build 
 of your NRP on NeuroLibre test servers.
 
 After a successful build, the following reproducibility assets are transferred from our preview server (public) to our production servers 
-(reserved for published NPRs only) and archived individually on Zenodo:
+(reserved for published NRRs only) and archived individually on Zenodo:
 
 1. Docker image
 2. Dataset (unless already archived)
@@ -73,7 +80,7 @@ Each of these reproducibility assets is attributed to every author on the NRP, a
 .. sidebar:: ➕ More than another Binder/Jupyter instance
 
    In addition to providing a seamless publication workflow for reproducible preprints and officially registering them for discoverability
-   of scholarly content, NeuroLibre overcomes an important reproducibility roadblock. For example, without the bundling of reproducibility 
+   of scholarly content, NeuroLibre overcomes an important reproducibility roadblock. Because absent the bundling of reproducibility 
    assets within a dedicated publication framework:
 
    * Public container registries wipe out images.
@@ -84,7 +91,7 @@ Each of these reproducibility assets is attributed to every author on the NRP, a
    we preserve and safeguard all necessary assets, leaving no room for disappearing images, version woes, or elusive data. Rest easy, 
    knowing your preprint remains reproducible and readily available to all.
 
-Once the archival process is complete, a summary PDF is generated. This PDF is necessary to officially register NPRs as preprints. All the 
+Once the archival process is complete, a summary PDF is generated. This PDF is necessary to officially register NRPs as preprints. All the 
 archived reproducibility assets, cited references, and the link to the reproducible preprint are resource linked to the DOI assigned by NeuroLibre 
 upon publication (DOI: 10.55458/neurolibre).
 
