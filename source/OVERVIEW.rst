@@ -75,7 +75,10 @@ After a successful build, the following reproducibility assets are transferred f
 3. Repository (version cut at the latest successful build)
 4. Built NRP (HTML pages of the executable book)
 
+
 Each of these reproducibility assets is attributed to every author on the NRP, and they are assigned a DOI (Digital Object Identifier).
+
+Once the archival process is complete, a summary PDF is generated. This PDF is necessary to officially register NRPs as preprints. 
 
 .. sidebar:: ➕ More than another Binder/Jupyter instance
 
@@ -91,8 +94,7 @@ Each of these reproducibility assets is attributed to every author on the NRP, a
    we preserve and safeguard all necessary assets, leaving no room for disappearing images, version woes, or elusive data. Rest easy, 
    knowing your preprint remains reproducible and readily available to all.
 
-Once the archival process is complete, a summary PDF is generated. This PDF is necessary to officially register NRPs as preprints. All the 
-archived reproducibility assets, cited references, and the link to the reproducible preprint are resource linked to the DOI assigned by NeuroLibre 
+All the archived reproducibility assets, cited references, and the link to the reproducible preprint are resource linked to the DOI assigned by NeuroLibre 
 upon publication (DOI: 10.55458/neurolibre).
 
 Similar to that in traditional preprint repositories (e.g. arXiv), NeuroLibre updates metadata relationship to an Author Accepted Manuscript (AAM) or
