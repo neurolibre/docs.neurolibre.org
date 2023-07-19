@@ -2,10 +2,10 @@ Bare-metal to BinderHub
 =======================
 
 Installation of the BinderHub  from bare-metal is fully automatic and reproducible through `terraform <https://www.terraform.io/>`_ configuration
-runned using `this Docker container <https://github.com/neurolibre/neurolibre-binderhub/blob/master/Dockerfile>`_.
+ran using `this Docker container <https://github.com/neurolibre/neurolibre-binderhub/blob/master/Dockerfile>`_.
 
-The following is intended for neurolibre backend developpers, but can be read by anyone interrested in our process.
-It assumes that you have basic knowledge on using the command line on a remote server (bash, ssh authentification..).
+The following is intended for neurolibre backend developers, but can be read by anyone interested in our process.
+It assumes that you have basic knowledge on using the command line on a remote server (bash, ssh authentication..).
 
 The sections :ref:`Pre-setup` and :ref:`Docker-specific preparations` should be done just the first time.
 Once it is done, you can directly go to the section :ref:`Spawn a BinderHub instance using Docker`.
@@ -15,11 +15,11 @@ Pre-setup
 
 You first need to prepare the necessary files that will be used later to install and ssh to the newly spawned BinderHub  instance.
 
-We are using `git-crypt <https://github.com/AGWA/git-crypt>`_ to encrypt our password files for the whole process, these can be uncrypted with the appropriate :code:`gitcrypt-key`.
+We are using `git-crypt <https://github.com/AGWA/git-crypt>`_ to encrypt our password files for the whole process, these can be unencrypted with the appropriate :code:`gitcrypt-key`.
 For the ssh authentication on the BinderHub  server, you have two choices : i) use neurolibre’s key (recommended) or ii) use your own ssh key.
 
 .. note:: You can request the :code:`gitcrypt-key`, :code:`neurolibre’s ssh key`, :code:`cloudflare` and :code:`arbutus API keys` to any infrastructure admin if authorized.
-.. warning:: You should never share the aformentioned file to anyone.
+.. warning:: You should never share the aforementioned file to anyone.
 
 1. Create a folder on your local machine, which is later to be mounted to the Docker container for securely using your keys during spawning a BinderHub instance.
    Here, we will call it :code:`my-keys` for convenience:

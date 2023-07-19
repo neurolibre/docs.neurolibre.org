@@ -11,7 +11,7 @@ The binderhub was stuck at the building phase, trying in vain to pull images fro
 Among many `ideas <https://github.com/jupyterhub/binderhub/issues/864>`_, one of them that came up pretty quickly was to simply create our own local docker registry on arbutus. 
 This would allow for low latency when pulling the images from the registry (connected to the local network where the binderhub resides).
 
-The following documentation explains how we built our own docker registry on Arbutus, it is intended for developpers who want to spawn a new ``Binderhub`` on another ``openstack`` host.
+The following documentation explains how we built our own docker registry on Arbutus, it is intended for developers who want to spawn a new ``Binderhub`` on another ``openstack`` host.
 It contains also instructions on how to create volumes on ``openstack`` (for the ``Repo2Data`` databases) and attach them to the docker registry.
 
 .. note:: It is still not the case, but in the future we expect the docker registry spawning to be part of the terrafrom configurations.
@@ -20,7 +20,7 @@ Instance spawning
 -----------------
 
 The first thing to do is to create a new instance on Arbutus using ``openstack``. 
-It provides a graphical interface to interract with our openstack project from computecanada.
+It provides a graphical interface to interact with our openstack project from computecanada.
 
 You will first need to `log-in into the openstack dashboard <https://arbutus.cloud.computecanada.ca/>`_.
 
@@ -51,7 +51,7 @@ When it is done, click on the right of the instance under ``Compute/Instances`` 
 .. image:: img/instance_menu.png
   :width: 150px
 
-.. warning:: You have a limited amount of floating IPs, so be carefull before using one.
+.. warning:: You have a limited amount of floating IPs, so be careful before using one.
 
 Firewall
 --------
