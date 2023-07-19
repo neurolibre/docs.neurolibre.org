@@ -7,40 +7,48 @@
 Test your NRP
 ================================
 
-It is really important to first test your submission locally to alleviate further issues when deploying on Neurolibre server.
-You need to make sure that:
+Prior to deployment on the Neurolibre server, it is crucial to thoroughly test your submission locally 
+to prevent potential issues. Here are the essential steps to ensure a smooth deployment:
 
-* All the notebooks run locally with the hardware requirements from computation and data section.
-* The jupyter book builds fine locally (make sure that you are not using cache files).
+* Verify Local Notebook Execution:
 
-Test locally
-::::::::::::::
+Test all the notebooks locally, ensuring they run seamlessly with the specified hardware requirements 
+mentioned in the computation and data section.
 
-Assuming that:
+* Validate Jupyter Book Build:
 
-* you already installed all the dependencies to develop your notebooks locally 
-* your preprint repository follows the NeuroLibre :doc:`SUBMISSION_STRUCTURE`.
+Locally build the Jupyter book without relying on cache files to ensure it compiles successfully.
+By meticulously testing your submission locally, you can preemptively address any problems and guarantee a 
+reliable deployment experience on the Neurolibre server. This proactive approach will save time and ensure a 
+smoother integration into the platform.
 
-You can easily test your preprint build locally.
+* Test your NRP on RoboNeuro
 
-1. Install Jupyter Book
-:::::::::::::::::::::::
+We provide a web service to test your NRP builds using the same infrastructure involved in the technical 
+screening process.
 
- .. code-block:: shell
+Quick guide for local testing
+:::::::::::::::::::::::::::::
 
-    pip install jupyter-book
+With the necessary dependencies already installed for local notebook development and 
+your preprint repository structured according to the :doc:`STRUCTURE`, conducting a local test of 
+your preprint build becomes a straightforward process.
 
-2. Manage your data
-:::::::::::::::::::
+.. admonition:: Install Jupyter Book (prefer ``<= 0.14.0``)
 
-Given the following minimalistic repository structure:
+   .. code-block:: shell
 
-.. code-block:: shell
+      pip install jupyter-book
 
-    .
+.. admonition:: Describe your data dependencies 
+
+   Given the following minimalistic repository structure:
+
+   .. code-block:: shell
+
     ├── binder
     │   ├── requirements.txt
-    │   └── data_requirement.json        
+    │   └── data_requirement.json
     ├── content
     │   ├── _build
     │   ├── notebook.ipynb
@@ -48,84 +56,118 @@ Given the following minimalistic repository structure:
     │   └── _toc.yml
     └── README.md
 
-Create a directory ``data`` at the root of the repository.
-Install `Repo2Data <https://github.com/SIMEXP/Repo2Data>`_ and configure the ``dst`` from the requirement file so it points to the ``data`` folder.
+   Create a folder named ``data`` at the root of the repository and don't forget to add it to the .gitignore file to exclude it from version control:
 
-.. code-block:: shell
+   .. code-block
 
-  pip install repo2data
+    /data 
 
-Run ``repo2data`` inside your notebook and get the path to the data.
+   Install `Repo2Data <https://github.com/SIMEXP/Repo2Data>`_:
 
-.. code-block:: shell
+   .. code-block:: shell
 
-  # install the data if running locally, or points to cached data if running on neurolibre
-  data_req_path = os.path.join("..", "binder", "data_requirement.json")
-  # download data
-  repo2data = Repo2Data(data_req_path)
-  data_path = repo2data.install()
+    pip install repo2data
 
-.. seealso:: Check this `example for running repo2data <https://github.com/neurolibre/repo2data-caching>`_, agnostic to server data path.
+   Configure the ``dst`` from the requirement file (``binder/data_requirement.json``), so it points to the ``data`` folder you created:
 
-3. Book build
-:::::::::::::
+   .. code-block:: json
 
-- Navigate to the repository location in a terminal
+    {"src" : "/url/to/the/online/source",
+     "dst" : "../data",
+     "projectName": "my_dataset"}
 
- .. code-block:: shell
+   Run ``repo2data`` inside your notebook and get the path to the data.
+
+   .. code-block:: python
+    import os
+    from repo2data.repo2data import Repo2Data
+    # Tell repo2data where to find the data_requirement.json
+    data_req_path = os.path.join("..", "binder", "data_requirement.json")
+    # Instantiate a repo2data object
+    repo2data = Repo2Data(data_req_path)
+    # Download the dataset and store data_path in a variable
+    # Once the data is downloaded, successive runs will not re-attempt downloading it.
+    data_path = repo2data.install()[0]
+
+.. admonition:: Build your Jupyter Book
+
+   .. code-block:: shell
 
     cd /your/repo/directory
-
-- Trigger a jupyter book build
-
- .. code-block:: shell
-
     jupyter-book build ./content
 
-.. seealso:: Please visit reference `documentation <https://jupyterbook.org/content/execute.html?highlight=execute#execute-and-cache-your-pages>`_ on executing and caching your outputs during a book build.
+   Please visit reference `documentation <https://jupyterbook.org/content/execute.html?highlight=execute#execute-and-cache-your-pages>`_ on executing and caching your outputs during a book build.
+
+.. admonition:: See also: GitHub Actions to test book builds
+   :class: hint
+   
+   You can take a look at `this example GitHub Actions file <https://github.com/rrsg2020/paper/blob/main/.github/workflows/main.yml>`_ to see how you can trigger
+   a book build whenever a commit is pushed to the main branch of your NRP repository.
+
+   Please be aware that the GitHub Actions workflow's necessary steps may vary depending on your specific requirements. It's essential to adapt the workflow accordingly to 
+   suit your NRP's needs.
 
 Testing on NeuroLibre servers
 :::::::::::::::::::::::::::::
 
-Meet ``RoboNeuro``! Our preprint submission bot is at your service 24/7 to help you create a NeuroLibre preprint.
+We are thrilled to present 🤖 RoboNeuro 🤖, our dedicated preprint submission bot, designed to assist you in effortlessly 
+creating NeuroLibre preprints anytime you need. With RoboNeuro at your service round the clock, preprint submission becomes a breeze!
 
 .. image:: https://github.com/neurolibre/brand/blob/main/png/preview_magn.png?raw=true
   :width: 500
   :align: center
 
-We would like to ensure that all the submissions we receive meet certain requirements. To that end, we created the `RoboNeuro preview service <https://robo.neurolibre.org>`_, 
-where you point RoboNeuro to a public GitHub repository, enter your email address, then sit back and wait for the results.
+This service allows you to evaluate whether your submission meets specific requirements before formal submission. 
+It helps ensure that all contributions align with our guidelines and standards.
 
-.. note:: RoboNeuro book build process has two stages. First, **it creates a virtual environment** based on your runtime descriptions. If this stage is successful, then it proceeds to 
-          build a Jupyter Book by **re-executing your code** in that environment. 
+Using the RoboNeuro preview service is a straightforward process:
 
-- On a successful book build, we will return you a preprint that is beyond PDF!
-- If the build fails, we will send two log files for your inspection.
+1. Access the service at https://robo.neurolibre.org.
+2. Provide the URL of your public GitHub repository.
+3. Enter your email address and the GitHub commit SHA for the build.
+4. Wait for the service to process your request and send you the results via email.
 
-.. warning:: **A successful book build on RoboNeuro preview service is a prerequisite for submission.**
+By leveraging the RoboNeuro preview service, we aim to enhance the quality and consistency of submitted preprints.
+It serves as a valuable tool for authors, allowing them to verify that their work aligns with the necessary criteria before 
+proceeding with the formal submission process.
 
-            Please note that RoboNeuro book preview is provided as a public service with limited computational resources. Therefore we encourage you to build your book locally before
-            requesting our online service. Instructions are available in :doc:`LOCAL_TESTING`.
+.. note:: The RoboNeuro book build process comprises two distinct stages:
 
-Debugging for long NeuroLibre submission
+   - Firstly, it establishes a virtual environment based on your specified runtime descriptions (``runtime build``). 
+   - Upon successful completion of this stage, it proceeds to the second phase, where it builds the Jupyter Book by re-executing your code within that environment (``book build``).
+
+🌱 **On a successful book build**, we will return you a https://preview.neurolibre.org URL that serves your NRP at the provided commit SHA from which it was built.
+
+🥀 If the build fails, we will send you an html file that contains the following logs:
+  - Binder build logs
+  - Book build logs 
+  - Execution logs of individual notebooks
+
+.. admonition:: A successful book build on RoboNeuro preview service makes techical screening easier.
+   :class: error
+
+   Please note that RoboNeuro book preview is provided as a public service with limited computational resources. 
+   Therefore we encourage you to build your book locally before using https://robo.neurolibre.org.
+
+Debugging a long-running ``book build``
 ----------------------------------------
 
-As for ``mybinder``, we also provide a binder submission page so you can play with your notebooks on our servers.
-Our binder submission page is available here: https://test.conp.cloud.
+We offer https://test.conp.cloud, a Binder build page, where you can initiate a ``runtime build.``
+By default, if the ``runtime build`` succeeds, it automatically proceeds to perform a ``book build.``
 
-When this process is really usefull for debugging your submission live, it can be verry long to get it.
-Indeed, a jupyter book build will always occur under the hood, and as part of the build process it will try to execute everything within your submission.
-This can make the build process very long (especially if you have a lot of long-running notebooks), and so you will end up waiting forever to get the binder instance.
+However, if the execution of all your notebooks take considerably long time (say more than 20 minutes), you may
+want to bypass the ``book build`` phase to debug a particular notebook in the runtime environment built on our test
+BinderHub. This is particularly useful in cases where the Jupyter book build fails on Neurolibre but works locally.
 
-If you are in a case where the jupyter book build fails on Neurolibre for whatever reason but works locally,
-you can bypass the jupyter book build to get the interactive session almost instantly.
+To bypass the ``book build``, simply include ``--neurolibre-debug`` in your latest commit message, as demonstrated in `this 
+git commit <https://github.com/ltetrel/nimare-paper/commit/4d5938819ad0a21365bc849ab91d29211556c77d>`_. Upon a successful ``runtime build``, 
+you can interact with your NeuroLibre Research Preprint (NRP) through the Jupyter Notebook interface in your web browser. This interface allows you to execute code cells 
+in specific notebooks or run commands in the terminal as needed.
 
-.. note:: For example if you have “out of memory” errors on Neurolibre, you can reduce the RAM requirements on the interactive session, and try to re-run the jupyter book build directly on the fly.
+.. note:: If you run into ``out of memory`` errors on Neurolibre, you can reduce the RAM requirements on the interactive session, and try to re-run the jupyter book build in the same session.
 
-Just add ``--neurolibre-debug`` in your latest commit message to bypass the jupyter book build (as in `this git commit <https://github.com/ltetrel/nimare-paper/commit/4d5938819ad0a21365bc849ab91d29211556c77d>`_).
-Now if you register your repository on https://test.conp.cloud, you will have your binder instance almost instantly.
-You should be able to open a terminal session or play with the notebooks from there.
-
-.. note:: This setup requires a previous valid binder build. If you are not able to build your binder, then you don't have a choice to fix the installation locally on your PC.
-
-.. warning:: Please remember to remove the flag ``--neurolibre-debug`` when you are ready to submit, since NeuroLibre needs to build the jupyter book.
+.. admonition:: Do not forget to remove the debug flag
+   :class: error 
+   
+   Once you have finished debugging your executable content on https://test.conp.cloud, make sure that your latest commit does not have 
+   the ``--neurolibre-debug`` in its commit message. Otherwise, following requests will not trigger a ``book build``.
