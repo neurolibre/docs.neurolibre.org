@@ -71,7 +71,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
 
 
 .. admonition:: 💻 Supported programming languages
-   :class: contentnew
+   :class: newcontent
 
    NRPs, being part of the Jupyter ecosystem, offer the flexibility to utilize a wide range of programming languages, 
    provided they do not require a license (e.g., MATLAB is not supported yet, but you can use Octave).
@@ -84,7 +84,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
    following (green) section.
 
 .. admonition:: 📝 Managing citations and bibliography in your reproducible preprint
-   :class: dropdown contentnew
+   :class: dropdown newcontent
 
    To cite articles in your reproducible preprint, include your bibtex formatted bibliographic entries in a :kbd:`paper.bib` file located at the root of your repository,
    which is the same bibliography used by the companion PDF. 
@@ -102,7 +102,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
    For further details regarding the management of citations and bibliography in Jupyter Book, please see the `reference docs <https://jupyterbook.org/en/stable/content/citations.html>`_.
 
 .. admonition:: ➕ Reproducible preprint in disguise (traditional article layout)
-   :class: dropdown contentnew
+   :class: dropdown newcontent
 
    If you prefer your reproducible preprint to have a layout resembling a traditional article — single page and without sidebars — 
    you can achieve this by creating your content in a single Notebook or MyST markdown file. Additionally, include a :kbd:`content/_neurolibre.yml` 
@@ -116,7 +116,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
    See an `example <https://preview.neurolibre.org/book-artifacts/rrsg2020/github.com/paper/562fb392105e48b5da7a4b6bfcf82d7504ea7c71/_build/_page/index/singlehtml>`_ of an NRP that combines the appearance of a traditional article with the powerful features of a Jupyter Book.
 
 .. admonition:: 🎚 Make the most of your NRP with interactive visualizations
-   :class: contentnew
+   :class: newcontent
 
    We strongly recommend incorporating interactive visualizations, such as those offered by `plotly <https://plotly.com/>`_, to enhance the value of your NRP.
 
