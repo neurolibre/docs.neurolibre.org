@@ -72,7 +72,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
 
 
 .. admonition:: 💻 Supported programming languages
-   :class: newcontent
+   :class: random
 
    NRPs, being part of the Jupyter ecosystem, offer the flexibility to utilize a wide range of programming languages, 
    provided they do not require a license (e.g., MATLAB is not supported yet, but you can use Octave).
