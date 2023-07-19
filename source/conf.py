@@ -63,4 +63,4 @@ html_favicon = 'img/logo_neurolibre_small.png'
 html_static_path = ['_static']
 
 def setup(app):
-    app.add_stylesheet('custom.css')
+    app.add_css_file('custom.css')

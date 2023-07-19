@@ -7,8 +7,6 @@
    STRUCTURE
    TEST_SUBMISSION
    SUBMIT
-   SUBMISSION_STRUCTURE
-   LOCAL_TESTING
 
 .. toctree::
    :maxdepth: 2
