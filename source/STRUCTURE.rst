@@ -38,18 +38,17 @@ within a folder named :contentlabel:`content`.
 
 .. sidebar:: 📑 Reference documentations
 
-  .. raw:: html
-  
+   .. raw:: html
 
-   <ul>
-   <li><a href="https://jupyterbook.org/en/stable/content/myst.html" target="_blank">Writing narrative content</a></li>
-   <li><a href="https://jupyterbook.org/en/stable/content/execute.html" target="_blank">Writing executable content</a></li>
-   <li><a href="https://jupyterbook.org/en/stable/file-types/index.html" target="_blank">Allowed content types</a></li>
-   <li><a href="https://jupyterbook.org/en/stable/content/citations.html" target="_blank">Citations and bibliography</a></li>
-   <li><a href="https://jupyterbook.org/en/stable/interactive/interactive.html" target="_blank">Interactive outputs</a></li>
-   <li><a href="https://jupyterbook.org/en/stable/structure/toc.html" target="_blank"><code>_toc.yml</code></a></li>
-   <li><a href="https://jupyterbook.org/en/stable/structure/config.html" target="_blank"><code>_config.yml</code></a></li>
-   </ul>
+    <ul>
+    <li><a href="https://jupyterbook.org/en/stable/content/myst.html" target="_blank">Writing narrative content</a></li>
+    <li><a href="https://jupyterbook.org/en/stable/content/execute.html" target="_blank">Writing executable content</a></li>
+    <li><a href="https://jupyterbook.org/en/stable/file-types/index.html" target="_blank">Allowed content types</a></li>
+    <li><a href="https://jupyterbook.org/en/stable/content/citations.html" target="_blank">Citations and bibliography</a></li>
+    <li><a href="https://jupyterbook.org/en/stable/interactive/interactive.html" target="_blank">Interactive outputs</a></li>
+    <li><a href="https://jupyterbook.org/en/stable/structure/toc.html" target="_blank"><code>_toc.yml</code></a></li>
+    <li><a href="https://jupyterbook.org/en/stable/structure/config.html" target="_blank"><code>_config.yml</code></a></li>
+    </ul>
 
 Inside the :contentlabel:`content` directory, you have the freedom to organize the ``SOURCE`` files as per your preference::
 
