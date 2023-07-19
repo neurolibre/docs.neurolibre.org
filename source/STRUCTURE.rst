@@ -93,13 +93,13 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
 
    .. code-block:: yaml
 
-      bibtex_bibfiles:
-        - ../paper.bib
-      sphinx:
-        config:
+    bibtex_bibfiles:
+       - ../paper.bib
+    sphinx:
+       config:
           bibtex_reference_style: author_year
     
-    For further details regarding the management of citations and bibliography in Jupyter Book, please see the `reference docs <https://jupyterbook.org/en/stable/content/citations.html>`_.
+   For further details regarding the management of citations and bibliography in Jupyter Book, please see the `reference docs <https://jupyterbook.org/en/stable/content/citations.html>`_.
 
 .. admonition:: ➕ Reproducible preprint in disguise (traditional article layout)
    :class: dropdown contentnew
@@ -110,18 +110,10 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
 
    .. code-block:: yaml
 
-     book_layout: traditional
-     single_page: index.ipynb
+    book_layout: traditional
+    single_page: index.ipynb
   
-   Below is an example of an NRP that combines the appearance of a traditional article with the powerful features of a Jupyter Book:
-  
-   .. raw:: html
-
-    <center>
-      <iframe id="binder-frame" width="90%" height="600" marginwidth="5%"
-      src="https://preview.neurolibre.org/book-artifacts/rrsg2020/github.com/paper/562fb392105e48b5da7a4b6bfcf82d7504ea7c71/_build/_page/index/singlehtml"></iframe>
-    </center>
-    <br>
+   See an `example <https://preview.neurolibre.org/book-artifacts/rrsg2020/github.com/paper/562fb392105e48b5da7a4b6bfcf82d7504ea7c71/_build/_page/index/singlehtml>`_ of an NRP that combines the appearance of a traditional article with the powerful features of a Jupyter Book.
 
 .. admonition:: 🎚 Make the most of your NRP with interactive visualizations
    :class: contentnew
