@@ -1,4 +1,5 @@
 .. admonition:: Beta Release
+   :class: error
 
    **Please be advised that our service is currently in its beta release of development.** As a beta user, your feedback and suggestions are highly valuable in helping us identify and address any issues. 
    We kindly request your patience and understanding as we work diligently to enhance the service based on your input.
@@ -20,7 +21,7 @@ Embracing this principle, NRPs are built by seamlessly combining the outputs of 
 all within the same execution runtime required for your analyses.
 
 |
-.. rubric:: Moving from static PDFs with code and data availability statements to NRPs is the giant leap that modern research yearns for. With NeuroLibre, we've cracked the code to make that leap a walk in the park.
+.. rubric:: Moving from static PDFs with code and data availability statements to NRPs is the quantum leap that modern research yearns for. With NeuroLibre, we are dedicated to make that leap as easy as it gets. 
 
 
 .. admonition:: Explore a published NRP

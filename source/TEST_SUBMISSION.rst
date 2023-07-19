@@ -1,6 +1,10 @@
-.. warning:: NeuroLibre is at an alpha stage of development, and is not currently open for submissions.
+.. admonition:: Beta Release
+   :class: error
 
-Step 2 - 🖥️ Test your submission
+   **Please be advised that our service is currently in its beta release of development.** As a beta user, your feedback and suggestions are highly valuable in helping us identify and address any issues. 
+   We kindly request your patience and understanding as we work diligently to enhance the service based on your input.
+
+Test your NRP
 ================================
 
 Local testing is checking notebooks are running, binder and jupyter book is building.
