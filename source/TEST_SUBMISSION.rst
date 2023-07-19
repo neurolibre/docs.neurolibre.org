@@ -113,7 +113,7 @@ Debugging for long NeuroLibre submission
 As for ``mybinder``, we also provide a binder submission page so you can play with your notebooks on our servers.
 Our binder submission page is available here: https://test.conp.cloud.
 
-When this process is really usefull for debugging your submission live, it can be verry long to get it.
+When this process is really useful for debugging your submission live, it can be very long to get it.
 Indeed, a jupyter book build will always occur under the hood, and as part of the build process it will try to execute everything within your submission.
 This can make the build process very long (especially if you have a lot of long-running notebooks), and so you will end up waiting forever to get the binder instance.
 

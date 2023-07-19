@@ -18,7 +18,7 @@ We expect to find all the submission material in a **public** GitHub repository 
 | ├── `paper.md <#static-summary>`_
 | └── `paper.bib <#static-summary>`_
 
-Our meta anlaysis on myelin submission which is publically available `in this github repository <https://github.com/Notebook-Factory/myelin-meta-analysis>`_ should help you understand the layout.
+Our meta anlaysis on myelin submission which is publicly available `in this github repository <https://github.com/Notebook-Factory/myelin-meta-analysis>`_ should help you understand the layout.
 
 .. warning:: If RoboNeuro does not see this file layout, it will fail to build the jupyter book build (but may be able to build the computing environment).
             Make sure that your file layout never change during runtime (especially if using a Dockerfile).
@@ -74,7 +74,7 @@ or a ``Dockerfile``.
 1.1.2 Environment configuration for NeuroLibre
 ..............................................
 
-You should try to make your environment clean and concize, that is why the prefered configuration file for NeuroLibre are the
+You should try to make your environment clean and concize, that is why the preferred configuration file for NeuroLibre are the
 ``requirements.txt``.
 
 It should be small (to keep environment building and loading as short as possible), and versionnized (so your
@@ -115,7 +115,7 @@ On the other hand, this one is concise, reproducible and will take much less tim
 
 .. topic:: Best practices when using Dockerfiles
   
-  While Neurolibre can build a Dockerfile environment, we don't recommend it as this can be a source of lot of erros during build.
+  While Neurolibre can build a Dockerfile environment, we don't recommend it as this can be a source of lot of errors during build.
   If you don't have choice, please make sure to follow these specific instructions:
 
   1. We recommend that you use our base image to help you build your Dockerfile for Neurolibre:

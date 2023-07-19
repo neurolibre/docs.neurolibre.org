@@ -47,7 +47,7 @@ For more information please check `the data related section <SUBMISSION_STRUCTUR
 Which version of ``jupyter-book`` and ``repo2data`` should I use ?
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 We always recommend latest versions for better compatibility.
-For ``jupyter-book`` you are free to use any version you like, since we rely only on the compiled artifcats.
+For ``jupyter-book`` you are free to use any version you like, since we rely only on the compiled artifacts.
 For ``repo2data``, we highly advise to match latest version because this is what is used on the backend.
 
 How can I cache my experiments ?
