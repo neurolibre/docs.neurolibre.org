@@ -25,7 +25,7 @@ The illustration above is a concise overview of the key components required to b
 The following sections provide details on the expected layout of an NRP repository that lives on GitHub.
 
 🟠 :contentlabel:`The content folder`
-::::::::::::::::::
+::::::::::::::::::::::::::::::::::::
 
 To provide a powerful, flexible, and interactive way to create your preprint, NRPs are based on `the Jupyter Book <https://jupyterbook.org>`_.
 
@@ -71,7 +71,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
 
 
 .. admonition:: 💻 Supported programming languages
-   :class: dropdown contentnew
+   :class: contentnew
 
    NRPs, being part of the Jupyter ecosystem, offer the flexibility to utilize a wide range of programming languages, 
    provided they do not require a license (e.g., MATLAB is not supported yet, but you can use Octave).
