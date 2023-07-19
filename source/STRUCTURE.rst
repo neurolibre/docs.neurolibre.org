@@ -69,6 +69,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
 
 ℹ️ Another ``REQUIRED`` component is the  :kbd:`content/_config.yml` to customize the appearance and behavior of your Jupyter Book.
 
+
 .. admonition:: 💻 Supported programming languages
    :class: dropdown contentad
 
