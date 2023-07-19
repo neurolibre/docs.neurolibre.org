@@ -116,6 +116,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
   
    See an `example <https://preview.neurolibre.org/book-artifacts/rrsg2020/github.com/paper/562fb392105e48b5da7a4b6bfcf82d7504ea7c71/_build/_page/index/singlehtml>`_ of an NRP that combines the appearance of a traditional article with the powerful features of a Jupyter Book.
 
+  ❗️Compatibility of this format with citations and bibliography has not been tested yet.
 .. admonition:: 🎚 Make the most of your NRP with interactive visualizations
    :class: newcontent
 
@@ -124,8 +125,6 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
    By utilizing interactive visualizations, you can fully leverage the potential of your figures and present your data in a more engaging and insightful manner.
    
    You can visit the `reference JupyterBook documentation <https://jupyterbook.org/en/stable/interactive/interactive.html?highlight=interactive>`_ to have your interactive outputs rendered in your NRP.  
-
-   ❗️Compatibility of this format with citations and bibliography has not been tested yet.
 
 🟢 :binderunlabel:`The binder folder (runtime)`
 ::::::::::::::::::
