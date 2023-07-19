@@ -143,7 +143,7 @@ proceeding with the formal submission process.
   - Book build logs 
   - Execution logs of individual notebooks
 
-.. admonition:: A successful book build on RoboNeuro preview service makes techical screening easier.
+.. admonition:: A successful book build on RoboNeuro preview service makes technical screening easier.
    :class: error
 
    Please note that RoboNeuro book preview is provided as a public service with limited computational resources. 
