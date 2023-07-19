@@ -1,10 +1,10 @@
 .rst-content .newcontent .admonition-title {
-    background: #f97c0b;
-    color: white
+    background: #f97c0b!important;
+    color: white!important
  }
  
  .rst-content .newcontent {
-    background: #f4d4bb;
+    background: #f4d4bb!important;
  }
 
 .rst-content .contentpdf .admonition-title {
