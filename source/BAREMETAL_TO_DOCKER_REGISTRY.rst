@@ -51,7 +51,7 @@ When it is done, click on the right of the instance under ``Compute/Instances`` 
 .. image:: img/instance_menu.png
   :width: 150px
 
-.. warning:: You have a limited amount of floating IPs, so be carefull before using one.
+.. warning:: You have a limited amount of floating IPs, so be careful before using one.
 
 Firewall
 --------

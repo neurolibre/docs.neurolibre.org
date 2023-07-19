@@ -9,6 +9,6 @@ When the network has been properly setup, the installation can continue with `ku
 We want to share our experience with the community, hence all our installation scripts are open-source available under
 `neurolibre/kubeadm-boostrap <https://github.com/neurolibre/kubeadm-bootstrap>`_ and `neurolibre/terraform-binderhub <https://github.com/neurolibre/terraform-binderhub>`_.
 
-.. warning:: NeuroLibre is still at an alpha stage of development, the github repositories will change frequently so be carefull if you use them.
+.. warning:: NeuroLibre is still at an alpha stage of development, the github repositories will change frequently so be careful if you use them.
 
 You can find more details on the installation at :doc:`BAREMETAL_TO_BINDERHUB`.
