@@ -1,18 +1,40 @@
-.. warning:: NeuroLibre is at an alpha stage of development, and is not currently open for submissions.
+.. admonition:: Beta Release
+   :class: error
 
-Step 3 - 💌 Submit
+   **Please be advised that our service is currently in its beta release of development.** As a beta user, your feedback and suggestions are highly valuable in helping us identify and address any issues. 
+   We kindly request your patience and understanding as we work diligently to enhance the service based on your input.
+
+Submit your NRP to NeuroLibre
 ==================
 
-.. warning:: **A successful book build on RoboNeuro preview service is a prerequisite for submission.**
-  Your submission request will go through only if we can find a built preprint on our test server for your preprint repository.
+.. admonition:: Before you submit
+   :class: warning
+   
+   Before submitting your NRP, please make sure that your GitHub repository adheres to the `expected structure <#structure-your-nrp-repository>`_.
+   It is ``RECOMMENDED`` for the authors to test the functionality of their NRPs locally and using the roboneuro test service. 
 
-Submission is as simple as:
+To submit your NRP:
 
-- Filling in the short submission form at `NeuroLibre web page <https://neurolibre.herokuapp.com>`_
-- Waiting for the managing editor to start a pre-review issue over in the NeuroLibre reviews repository: https://github.com/neurolibre/neurolibre-reviews
+- Login to the submission portal on https://neurolibre.org by using your **ORCID** (required). 
+- Click the submit button (either on the top bar or on the banner)
 
-🔎 Technical screening
-::::::::::::::::::::::
+Submission form includes the following fields:
 
-Our editorial team will start a technical screening process on GitHub to ensure the functionality of your preprint.
-We will contact you through email, so please check your email inbox!
+* :kbd:`Title` Please provide the same title provided in your ``content/_config.yml``.
+* :kbd:`Repository` Please provide the GitHub URL to your NRP repository.
+* :kbd:`Branch` We recommend leaving this field empty, which defaults to the ``main`` branch of your NRP repository, which is expected to be the most up to date before submission.
+* :kbd:`Software version`: If you have a release tag corresponding to the version of your submission, please indicate. Put ``v1.0`` otherwise.
+* :kbd:`Main subject of the paper`: Select ``mri``, ``fmri`` (the list will be extended).
+* :kbd:`Type of the submission`: Select ``New submission``
+* :kbd:`Preprint data DOI`:  Please provide if your dataset has already been given a DOI.
+* :kbd:`Message to the editors`: Briefly inform our content moderators about your submission in a few sentences, please keep it short.
+
+After your submission, the managing editor will initiate a pre-review issue in the `NeuroLibre reviews repository <https://github.com/neurolibre/neurolibre-reviews>`_, provided that the 
+content moderation is successful. During the pre-review, a **technical screener** will be assigned to your submission and the "review" will be started, which
+is a GitHub issue on the reviews repository.
+
+.. admonition:: Techical screening vs peer review
+   :class: warning
+
+   Technical screening is conducted to verify the functionality of your NRP. 
+   As a preprint publisher, NeuroLibre does not assess the scientific content of the preprint.

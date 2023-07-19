@@ -31,7 +31,8 @@ master_doc = 'index'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['recommonmark',
-              'sphinx.ext.autosectionlabel'
+              'sphinx.ext.autosectionlabel',
+              'sphinx_togglebutton'
              ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -60,3 +61,6 @@ html_favicon = 'img/logo_neurolibre_small.png'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+def setup(app):
+    app.add_css_file('custom.css')

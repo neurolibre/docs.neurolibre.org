@@ -1,0 +1,110 @@
+.rst-content .random .admonition-title {
+    background: #f97c0b!important;
+    color: white!important
+ }
+
+.rst-content .newcontent .admonition-title {
+    background: #f97c0b!important;
+    color: white!important
+ }
+ 
+ .rst-content .newcontent {
+    background: #f4d4bb!important;
+ }
+
+.rst-content .contentpdf .admonition-title {
+    background: #0c0c0b;
+    color: white
+ }
+ 
+ .rst-content .contentpdf {
+    background: #c5c5c2;;
+ }
+
+.rst-content .binderun .admonition-title {
+    background: #649b59;
+    color: white
+ }
+ 
+ .rst-content .binderun {
+    background: #d8ffd0;
+ }
+
+ .rst-content .binderdata .admonition-title {
+    background: #37cae2;
+    color: white
+ }
+ 
+ .rst-content .binderdata {
+    background: #9ae2ed;
+ }
+
+
+.rst-content .contentlabel, .rst-content .menuselection {
+    font-size: 80%;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 2.4px 6px;
+    margin: auto 2px;
+}
+
+.rst-content .contentpdflabel, .rst-content .menuselection {
+    font-size: 80%;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 2.4px 6px;
+    margin: auto 2px;
+}
+.rst-content .binderunlabel, .rst-content .menuselection {
+    font-size: 80%;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 2.4px 6px;
+    margin: auto 2px;
+}
+
+.rst-content .binderdatalabel, .rst-content .menuselection {
+    font-size: 80%;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 2.4px 6px;
+    margin: auto 2px;
+}
+
+.rst-content .contentlabel, .rst-content .menuselection {
+    border: 1px solid #ea8234;
+    background: #f97c0b;
+    color:white
+}
+
+.rst-content .contentpdflabel, .rst-content .menuselection {
+    border: 1px solid #0c0c0b;
+    background: #0c0c0b;
+    color:white
+}
+
+.rst-content .binderunlabel, .rst-content .menuselection {
+    border: 1px solid #649b59;
+    background: #649b59;
+    color:white
+}
+
+.rst-content .binderdatalabel, .rst-content .menuselection {
+    border: 1px solid #37cae2;
+    background: #37cae2;
+    color:white
+}
+
+button.toggle-button {
+    background: none;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 0.5em;
+    bottom: 0.1em;
+    padding: 0px;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bold;
+}
