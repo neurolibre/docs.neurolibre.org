@@ -109,7 +109,7 @@ is to be done in a remote node via :code:`ssh` access.
      helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
      helm repo update
 
-   The process is successfull if you see the :code:`Hub is up` message.
+   The process is successful if you see the :code:`Hub is up` message.
 
 10. Install BinderHub and its development requirements:
 

@@ -33,7 +33,7 @@ After your submission, the managing editor will initiate a pre-review issue in t
 content moderation is successful. During the pre-review, a **technical screener** will be assigned to your submission and the "review" will be started, which
 is a GitHub issue on the reviews repository.
 
-.. admonition:: Techical screening vs peer review
+.. admonition:: Technical screening vs peer review
    :class: warning
 
    Technical screening is conducted to verify the functionality of your NRP. 
