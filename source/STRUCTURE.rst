@@ -22,7 +22,9 @@ The next step of the evolution takes root from a **GitHub repository** behold th
 
 The illustration above is a concise overview of the key components required to bring an NRP to life from a public GitHub repository.
 
-The following sections provide details on the expected layout of an NRP repository that lives on GitHub.
+.. admonition:: Prepare your NRP
+
+   The following sections provide details on the expected layout of an NRP repository that lives on GitHub.
 
 🟠 :contentlabel:`The content folder`
 ::::::::::::::::::::::::::::::::::::
