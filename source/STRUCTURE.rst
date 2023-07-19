@@ -71,7 +71,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
 
 
 .. admonition:: 💻 Supported programming languages
-   :class: dropdown contentad
+   :class: dropdown contentnew
 
    NRPs, being part of the Jupyter ecosystem, offer the flexibility to utilize a wide range of programming languages, 
    provided they do not require a license (e.g., MATLAB is not supported yet, but you can use Octave).
@@ -84,7 +84,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
    following (green) section.
 
 .. admonition:: 📝 Managing citations and bibliography in your reproducible preprint
-   :class: dropdown contentad
+   :class: dropdown contentnew
 
    To cite articles in your reproducible preprint, include your bibtex formatted bibliographic entries in a :kbd:`paper.bib` file located at the root of your repository,
    which is the same bibliography used by the companion PDF. 
@@ -102,7 +102,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
     For further details regarding the management of citations and bibliography in Jupyter Book, please see the `reference docs <https://jupyterbook.org/en/stable/content/citations.html>`_.
 
 .. admonition:: ➕ Reproducible preprint in disguise (traditional article layout)
-   :class: dropdown contentad
+   :class: dropdown contentnew
 
    If you prefer your reproducible preprint to have a layout resembling a traditional article — single page and without sidebars — 
    you can achieve this by creating your content in a single Notebook or MyST markdown file. Additionally, include a :kbd:`content/_neurolibre.yml` 
@@ -124,7 +124,7 @@ Inside the :contentlabel:`content` directory, you have the freedom to organize t
     <br>
 
 .. admonition:: 🎚 Make the most of your NRP with interactive visualizations
-   :class: contentad
+   :class: contentnew
 
    We strongly recommend incorporating interactive visualizations, such as those offered by `plotly <https://plotly.com/>`_, to enhance the value of your NRP.
 

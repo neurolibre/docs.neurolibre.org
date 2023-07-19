@@ -1,11 +1,11 @@
 @import 'theme.css';
 
-.rst-content .contentad .admonition-title {
+.rst-content .contentnew .admonition-title {
     background: #f97c0b;
     color: white
  }
  
- .rst-content .contentad {
+ .rst-content .contentnew {
     background: #f4d4bb;
  }
 
