@@ -8,15 +8,15 @@ Submit your NRP to NeuroLibre
 ==================
 
 .. admonition:: Before you submit
-   :class: warning
+   :class: hint
    
-   Before submitting your NRP, please make sure that your GitHub repository adheres to the `expected structure <#structure-your-nrp-repository>`_.
-   It is ``RECOMMENDED`` for the authors to test the functionality of their NRPs locally and using the roboneuro test service. 
+   Before submitting your NRP, please make sure that your GitHub repository adheres to the :doc:`STRUCTURE`.
+   It is ``RECOMMENDED`` for the authors to test the functionality of their NRPs locally, then using the RoboNeuro test service (https://robo.neurolibre.org).
 
 To submit your NRP:
 
-- Login to the submission portal on https://neurolibre.org by using your **ORCID** (required). 
-- Click the submit button (either on the top bar or on the banner)
+- Login to the submission portal on https://neurolibre.org by using your **ORCID ID** (``REQUIRED``).
+- Click the submit button (the one on the top bar, or the fancier one on the banner).
 
 Submission form includes the following fields:
 

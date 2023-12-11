@@ -24,6 +24,7 @@
    :maxdepth: 2
    :caption: Developer documentation
 
+   FULLSTACK
    INFRASTRUCTURE
    BAREMETAL_TO_BINDERHUB
    BAREMETAL_TO_DOCKER_REGISTRY
