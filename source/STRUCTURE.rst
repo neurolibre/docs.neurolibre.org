@@ -49,7 +49,7 @@ within a folder named :contentlabel:`content`.
     <li><a href="https://jupyterbook.org/en/stable/content/citations.html" target="_blank">Citations and bibliography</a></li>
     <li><a href="https://jupyterbook.org/en/stable/interactive/interactive.html" target="_blank">Interactive outputs</a></li>
     <li><a href="https://jupyterbook.org/en/stable/structure/toc.html" target="_blank"><code>_toc.yml</code></a></li>
-    <li><a href="https://jupyterbook.org/en/stable/structure/config.html" target="_blank"><code>_config.yml</code></a></li>
+    <li><a href="https://jupyterbook.org/en/stable/customize/config.html" target="_blank"><code>_config.yml</code></a></li>
     </ul>
 
 Inside the :contentlabel:`content` directory, you have the freedom to organize the ``SOURCE`` files as per your preference::
