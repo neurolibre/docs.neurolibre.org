@@ -58,7 +58,7 @@ Step by step guide
 
 .. admonition:: Minimal example
 
-    Once these fields are updated, this is enought for an minimal test on `RoboNeuro <https://robo.neurolibre.org/>`_.
+    Once these fields are updated, this is enough for an minimal test on `RoboNeuro <https://robo.neurolibre.org/>`_.
     Skip to step 9 and 10 to see how to test your project.
 
 
@@ -67,7 +67,7 @@ Step by step guide
     - ✅ You can organize your content in subfolders.
     - ❌ We don't accept (non-executable) plain text markdown files alone.
 
-    We recommand to start testing with a project without the need to download data for demonstrative purpose.
+    We recommend to start testing with a project without the need to download data for demonstrative purpose.
     Please follow the full documentation to learn how to add data to your project.
 
 5. Edit ``_toc.yml`` to add your new executable content.
@@ -92,6 +92,6 @@ Step by step guide
         git add .
         git commit -m "update author information"
 
-10. Go to `RoboNeuro <https://robo.neurolibre.org/>`_ and click on the :kbd:`Complie preprint` button.
+10. Go to `RoboNeuro <https://robo.neurolibre.org/>`_ and click on the :kbd:`Compile preprint` button.
     From here you can iterate on your project by going back to step 4!
 
