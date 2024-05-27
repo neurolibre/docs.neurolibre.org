@@ -4,6 +4,118 @@ NeuroLibre operates two servers dedicated to serving static files and API endpoi
 
 The purpose of this section is to offer an overview of each component within the NeuroLibre full-stack server. This overview will provide a solid understanding of its architecture before delving into hands-on development. It serves as a helpful guide to familiarize oneself with the system's structure and functionalities, facilitating a smoother and more informed development process.
 
+### Data Storage for Test Server Stack (May 2024)
+
+As of May 2024, all data associated with the test server stack is stored in the neurolibre-data volume, which has a capacity of 1TB and is identified by the ID 05fe3035-**. This volume includes:
+
+* The book-artifacts directory, which contains the static HTML files generated from myst/jupyter-book builds.
+* Other directories storing submission data, managed by the repo2data tool.
+
+Needless to say, please do NOT delete this volume. It would not be the end of the world, yet this would hamper ongoing submissions. 
+
+#### Volume Mounting
+
+On the instance where the `neurolibre/full-stack-server` is deployed with preview configurations, the `neurolibre-data` volume is mounted on `/DATA`. You can verify this configuration by viewing the `/etc/fstab` file with the command:
+
+```
+sudo cat /etc/fstab
+```
+
+#### Network File Sharing (NFS) Setup
+
+The /DATA directory is shared between both the full-stack-server and binder-test instances via a Network File Sharing (NFS) protocol. In this setup:
+
+* The `full-stack-server` acts as the NFS server.
+* The `binder-test` instance acts as the NFS client.
+
+This configuration ensures that both instances have access to the same data directory (`/DATA`), facilitating seamless data management and sharing.
+
+##### Setting up the NFS server 
+
+######  Mounting and Installing NFS Server
+
+1. Ensure `/DATA` is Mounted
+
+Confirm that the `/DATA` directory has been properly mounted the `full-stack-server` instance.
+
+2. Install NFS Kernel Server
+
+Update the package list and install nfs-kernel-server:
+
+```
+sudo apt-get update
+sudo apt install nfs-kernel-server
+sudo systemctl start nfs-kernel-server 
+```
+
+confirm the status:
+
+```
+sudo systemctl start nfs-kernel-server 
+```
+
+> [!NOTE]
+> Make sure that the instance is spawned from a [Ubuntu Cloud image](https://cloud-images.ubuntu.com/) wih **generic** kernel. Instances spawned from a linux-kvm (Kernel-based Virtual Machine) optimized kernel will not support the installation of nfs-kernel-server due to the lack of necessary NFS drivers (nfsd).
+
+###### Configure NFS Exports
+
+3. Edit the /etc/exports File
+
+Open the /etc/exports file for editing:
+
+```
+sudo nano /etc/exports
+```
+
+4. Add the following line to share the `/DATA` directory over the internal network:
+
+```
+/DATA 192.168.73.0/24(rw,sync,no_root_squash,no_all_squash)
+```
+
+Put the following content in `/etc/exports` (use `sudo nano /etc/exports`):
+
+```
+/DATA 192.168.73.0/24(rw,sync,no_root_squash,no_all_squash)
+```
+
+This configuration shares the `/DATA` directory with all machines on the `192.168.73.0/24` subnet, allowing read and write access while disabling root squashing.
+
+##### Setting up an NFS client
+
+1. Install `nfs-common`:
+
+```
+sudo apt-get update
+sudo apt install nfs-common
+```
+
+2. To mount shared volume temporarily (disappears upon reboot of the client):
+
+```
+sudo mount -t nfs 192.168.73.179:/DATA /DATA
+```
+
+If you are asking the heck is that `192.168.73.179`, it is the internal IP address of the nfs server. You can either find it out on the cloudflare dashboard or by running `hostname -i` on the nfs server instance.  
+
+2. To mount shared volume permanently:
+
+Put the following content in the last line of the `/etc/fstab` (use `sudo nano /etc/fstab`):
+
+```
+192.168.73.179:/DATA      /DATA      nfs rw,noatime,nolock,hard,tcp 0 0
+```
+
+**NOTE:** If you are deploying BinderHub test server using terraform, you don't have to deal with this manually, just ensure that you pass the IP address using the following variable:
+
+```json
+variable "sftp_ip_address" {
+  description = "Internal IP address of the SFTP instance on openstack."
+}
+```
+
+For more details on deploying BinderHub on openstack using Terraform, see the relevant section of the developer documentation.
+
 ### Static files
 
 Static files are the reproducible preprint content (HTML, CSS, JS, etc.) that are generated in one of the following cases:
