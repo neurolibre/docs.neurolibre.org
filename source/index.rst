@@ -4,6 +4,7 @@
    :maxdepth: 2
    :caption: Author guidelines
 
+   QUICKSTART
    STRUCTURE
    TEST_SUBMISSION
    SUBMIT
