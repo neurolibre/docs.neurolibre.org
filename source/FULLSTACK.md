@@ -247,34 +247,180 @@ Be careful not to run these commands (or anything else in this section) as the `
 
 > Throughout the rest of this section, **`<type>`** refers to either `preview` or `preprint`.
 
+### Install prerequisites 
+
+* Update the package lists 
+
+```
+sudo apt-get update
+```
+
+* Install some basic dependencies in one line
+
+```
+sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates gpg
+```
+
 ### Install Redis 
 
 Simply follow [these instructions](https://redis.io/docs/getting-started/installation/install-redis-on-linux/) to install Redis on Ubuntu.
 
 Our server will use Redis both as message broker and backend for Celery asynchronous task manager. What a weird sentence, is not it? I tried to explain above what these components are responsible for. 
 
-#### Flask, Gunicorn, Celery, and other Python dependencies 
+### Install Docker
+
+#### Why?
+
+Docker containers are a critical component of the NeuroLibre workflow. These containers, created by `repo2docker` as part of the BinderHub builds, store all the dependencies for respective preprints in Docker images located in NeuroLibre's private container registry (https://binder-registry.conp.cloud).
+
+**On the test (preview) server**, Docker is required to pull these images from the registry to build MyST-formatted articles by spawning a Jupyter Hub. These operations are managed by the `myst_libre` Python package. As of May 2024, Jupyter-Book-based builds are handled by BinderHub. If ongoing support for Jupyter Books is needed, these builds should also be managed using `myst_libre`.
+
+**On the production (preprint) server**, Docker is necessary to pull images and archive them on Zenodo.
+
+#### Installation steps
+
+These steps are adapted from the [official documentation](https://docs.docker.com/engine/install/ubuntu) for Ubuntu 24.04. Please keep it up to date with the Ubuntu version. 
+
+* Set up Docker's apt repository:
+
+```
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+```
+
+* Select the OLDEST version among the available versions in the stable repository (just a convention):
+
+```
+VERSION_DOCKER=$(apt-cache madison docker-ce | awk '{ print $3 }' | sort -V | head -n 1)
+VERSION_CONTAINERD=$(apt-cache madison containerd.io | awk '{ print $3 }' | sort -V | head -n 1)
+```
+
+* Install docker and contai_nerd_ (container runtime): 
+
+```
+sudo apt install -y containerd.io=$VERSION_CONTAINERD docker-ce=$VERSION_DOCKER docker-ce-cli=$VERSION_DOCKER
+```
+
+#### Docker configurations
+
+To see the current docker configurations you can run `docker info`. 
+
+One important setting is the root directory where docker will save the images. To see this `docker info | grep 'Docker Root Dir`. 
+
+This is by default set to `/var/lib/docker`, which is on the system partition with limited memory. As the number of docker images grow (e.g., there are 10 ongoing submissions), this will raise problems. 
+
+On openstack, you can use the ephemeral storage (the HDD allocation that will be destroyed when the instance is destroyed) that is mounted to `/mnt` directory for this purpose. To achieve that:
+
+```
+sudo nano /etc/docker/daemon.json
+```
+
+with the following content:
+
+```
+{
+  "data-root": "/mnt"
+} 
+```
+
+* Stop the docker service:
+
+```
+sudo systemctl stop docker
+```
+
+Ideally you should perform these modifications **before** pulling images. If this is the case, skip this step. Otherwise, copy them over to the new location not to lose those images (this may take some time):
+
+```
+sudo rsync -axPS /var/lib/docker/ /mnt
+```
+
+After this you can `sudo rm -r /var/lib/docker` to reclaim that space. 
+
+* Start the docker service:
+
+```
+sudo systemctl start docker
+```
+
+* Confirm the changes have been applied by `docker info | grep 'Docker Root Dir`.
+
+### Flask, Gunicorn, Celery, and other Python dependencies 
 
 This documentation assumes that the server host is a Ubuntu VM. To install Python dependencies,
 we are going to use virtual environments.
 
-Ensure that python3 (3.6.9 or later) is available: 
+Check out which version of python is installed where:
 
 ```
 which python3
+python --version
 ```
 
-Install `virtualenv` by:
+For the server app, you may need a specific version of Python that differs from the one bundled with your Ubuntu distribution. We will manage this using virtual environments.
+
+##### Installing virtualenv
+
+To install virtualenv, use the following command:
 
 ```
-sudo apt install python3-venv
+sudo apt install python3-virtualenv
 ```
+
+##### Installing an Older Python Version
+
+If you need an older version of Python, such as Python `3.8` on Ubuntu `24.04`, you might need to add the deadsnakes PPA (Personal Package Archive).
+
+First, check if the desired Python version (e.g., `3.8`) is available in the default repositories. You can do this by trying to install it directly:
+
+```
+sudo apt install python3.8
+```
+
+If you encounter an error like the one below, you will need to add the 💀🐍 deadsnakes PPA (or another PPA of you choice that has the desired python distribution):
+
+```
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package python3.8
+E: Couldn't find any package by glob 'python3.8'
+```
+
+Follow these steps to add the deadsnakes PPA and install the required Python version:
+
+* Add the deadsnakes PPA:
+
+```
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+```
+
+* Now install the geriatric python version you want: 
+
+```
+sudo apt install python3.8
+```
+
+* Confirm installed location:
+
+```
+which python3.8
+```
+
+##### Creating a virtual env
+
 Create a new folder (`venv`) under the home directory and inside that folder, create a virtual environment named `neurolibre`:
 
 ```
 mkdir ~/venv
 cd ~/venv
-python3 -m venv neurolibre
+virtualenv neurolibre --python=/usr/bin/python3.8
 ```
 
 > Note: Please do not replace the virtual environment name above (`neurolibre`) with something else. You can take a look at the `systemd/neurolibre-<type>.service` configuration files as to why. 
@@ -738,6 +884,8 @@ dokku report my-dashboard
 | Ingress   | IPv4       | TCP      | 443 (HTTPS) | 0.0.0.0/0        |
 | Ingress   | IPv4       | UDP      | 1 - 65535   | -                |
 | Ingress   | IPv4       | UDP      | 1 - 65535   | 192.168.73.30/32 |
+
+Note: This is a pretty loose security group example. Depending on the type of connections you expect to the instance, please revise before applying them. 
 
 * Each application on Dokku will run in a container, named as "dynos" in Heroku. If you connect this VM to NewRelic (see instructions above), you can monitor each container/application/load and set alert conditions.
 
