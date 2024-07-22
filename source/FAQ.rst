@@ -25,7 +25,7 @@ You need use less than ~7.5GB of RAM, take less than 10GB runtime storage and no
 I want to contribute, how can I do that ?
 :::::::::::::::::::::::::::::::::::::::::
 It would be a pleasure to include external people on our project, please reach out to us via our `mattermost brainhack forum <https://mattermost.brainhack.org>`_ or #TODO:EMAIL!
-There are fundamentally two ways to contribute to NeuroLibre: as a `reviewer <REVIEWER.html>`_ or as a `developper <INFRASTRUCTURE.html>`_.
+There are fundamentally two ways to contribute to NeuroLibre: as a `reviewer <REVIEWER.html>`_ or as a `developer <INFRASTRUCTURE.html>`_.
 
 The reviewer team is in charge of checking if submissions execute ok on our servers, there are also exchanging with the author to help them improve it.
 Developer team works on the binderhub administration, backend workflows and frontend (including github integrations, and JOSS website template).

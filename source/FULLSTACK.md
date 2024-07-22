@@ -55,7 +55,7 @@ sudo systemctl start nfs-kernel-server
 ```
 
 > [!NOTE]
-> Make sure that the instance is spawned from a [Ubuntu Cloud image](https://cloud-images.ubuntu.com/) wih **generic** kernel. Instances spawned from a linux-kvm (Kernel-based Virtual Machine) optimized kernel will not support the installation of nfs-kernel-server due to the lack of necessary NFS drivers (nfsd).
+> Make sure that the instance is spawned from a [Ubuntu Cloud image](https://cloud-images.ubuntu.com/) with **generic** kernel. Instances spawned from a linux-kvm (Kernel-based Virtual Machine) optimized kernel will not support the installation of nfs-kernel-server due to the lack of necessary NFS drivers (nfsd).
 
 ###### Configure NFS Exports
 
@@ -258,7 +258,7 @@ sudo apt-get update
 * Install some basic dependencies in one line
 
 ```
-sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates gpg
+sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates gpg lsb-release
 ```
 
 ### Install Redis 

@@ -53,7 +53,7 @@ Code integration
 
 To make changes to the K8s integration of BinderHub, such as injecting `repo2data` specific `labels` to a `build pod`, we need to bring up a BinderHub for development.
 
-The following guidelines are inhereted from `the original BinderHub docs <https://github.com/jupyterhub/binderhub/blob/master/CONTRIBUTING.md#kubernetes-integration-changes>`_. This documentation assumes that the development
+The following guidelines are inherited from `the original BinderHub docs <https://github.com/jupyterhub/binderhub/blob/master/CONTRIBUTING.md#kubernetes-integration-changes>`_. This documentation assumes that the development
 is to be done in a remote node via :code:`ssh` access.
 
 1. :code:`ssh` into the previously configured node

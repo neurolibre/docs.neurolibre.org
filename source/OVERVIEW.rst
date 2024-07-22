@@ -96,10 +96,10 @@ Once the archival process is complete, a summary PDF is generated. This PDF is n
    knowing your preprint remains reproducible and readily available to all.
 
 All the archived reproducibility assets, cited references, and the link to the reproducible preprint are resource linked to the DOI assigned by NeuroLibre 
-upon publication (DOI: 10.55458/neurolibre).
+upon publication (DOI: `10.55458/neurolibre`).
 
 Similar to that in traditional preprint repositories (e.g. arXiv), NeuroLibre updates metadata relationship to an Author Accepted Manuscript (AAM) or
-Version of Record (VoR) after your article has been accepted for publication by a journal, following the peer review process and any revisions 
+Version of Record (`VoR`) after your article has been accepted for publication by a journal, following the peer review process and any revisions 
 requested by the reviewers or editors.
 
 

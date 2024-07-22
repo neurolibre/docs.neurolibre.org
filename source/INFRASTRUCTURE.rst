@@ -1,7 +1,7 @@
 Infrastructure overview
 =======================
 
-At the bottom of our infrastructure, we rely on `openstack <https://www.openstack.org/>`_ which spawns our multiple VMs (what we will reffer later as instance) and virtual volumes.
+At the bottom of our infrastructure, we rely on `openstack <https://www.openstack.org/>`_ which spawns our multiple VMs (what we will refer later as instance) and virtual volumes.
 After successful spawning of the instance, it is assigned a floating IP used to connect to it from the outside world.
 The `cloudflare DNS <https://www.cloudflare.com/>`_ then properly configure the chosen domain name under :code:`*.conp.cloud` automatically pointing to the assigned floating IP.
 When the network has been properly setup, the installation can continue with `kubernetes <https://kubernetes.io/>`_ and finishes with `BinderHub  <https://BinderHub .readthedocs.io/en/latest/index.html>`_.
