@@ -265,7 +265,7 @@ sudo apt install -y curl gnupg2 software-properties-common apt-transport-https c
 
 Simply follow [these instructions](https://redis.io/docs/getting-started/installation/install-redis-on-linux/) to install Redis on Ubuntu.
 
-Our server will use Redis both as message broker and backend for Celery asynchronous task manager. What a weird sentence, is not it? I tried to explain above what these components are responsible for. 
+Our server will use Redis both as message broker and backend for Celery asynchronous task manager. What a weird sentence, is not it? I tried to explain above what these components are responsible for.
 
 ### Install Docker
 
@@ -337,7 +337,7 @@ sudo systemctl stop docker
 Ideally you should perform these modifications **before** pulling images. If this is the case, skip this step. Otherwise, copy them over to the new location not to lose those images (this may take some time):
 
 ```
-sudo rsync -axPS /var/lib/docker/ /mnt
+sudo rsync -aP /var/lib/docker/ /mnt
 ```
 
 After this you can `sudo rm -r /var/lib/docker` to reclaim that space. 
@@ -349,6 +349,35 @@ sudo systemctl start docker
 ```
 
 * Confirm the changes have been applied by `docker info | grep 'Docker Root Dir`.
+
+### Install MyST markdown dependencies (preview server only)
+
+* As the test (preview) server should be capable of building MyST formatted preprints, certain Node dependencies must be present. For the latest version dependencies please see [here](https://mystmd.org/guide/quickstart).
+
+
+* Install node version manager (NVM):
+
+Either close and reopen your terminal to start using nvm or run the following to use it right away:
+
+```
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+
+Confirm installation:
+
+```
+nvm -v
+```
+
+* Use NVM to install node 
+
+```
+nvm install 20
+```
+
+confirm by `node -v`. Also check `npm -v` to ensure the minimum version requirement is met.
 
 ### Flask, Gunicorn, Celery, and other Python dependencies 
 
