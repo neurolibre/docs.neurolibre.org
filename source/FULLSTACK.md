@@ -463,7 +463,7 @@ source ~/venv/neurolibre/bin/activate
 If successful, the name of the environment should appear on bash, something like `(neurolibre) ubuntu@neurolibre-sftp:~/venv$`. **Ensure that the (neurolibre) environment is activated when you are executing the following commands**:
 
 ```
-pip3 install --upgrade pip
+pip3 install --upgrade pip setuptools wheel
 pip3 install -r ~/full-stack-server/api/requirements.txt
 ```
 
