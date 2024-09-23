@@ -1,3 +1,36 @@
+# Terraform deployment
+
+Both `preprint` and `preview` flavors of the full-stack server can be deployed and managed using Terraform. This modular approach allows for easy scaling and customization of the server infrastructure. Currently, the available providers support OpenStack only, yet the modular approach allows for easy integration with other cloud providers.
+
+## Deploy in 6 steps
+
+Assuming that you have the terraform CLI installed, have ssh access to the target OpenStack project, and have the necessary permissions to create instances, volumes, and other resources, you can deploy the full-stack server in 6 steps:
+
+- Clone infralibre: `git clone https://github.com/neurolibre/infralibre.git`
+- Copy over the files from `terraform-modules/providers/openstack-neurolibre-server` to a directory on your local machine
+- Source the OpenStack credentials and set necessary variables
+- Run `terraform init` to initialize the working directory
+- Run `terraform plan` to see the execution plan
+- Run `terraform apply` to apply the changes
+
+that's it!
+
+- Run `terraform destroy` to destroy the infrastructure
+
+Ability to create/destroy the server easily should not give you license not to understand what you are doing. The rest of this section is dedicated to explaining what each of the server components is responsible for and how they interact with each other.
+
+The only glitch you may have to deal with is mounting the external-data volume. The volume will be created and attached to the instance if you specified NOT to use an existing volume (by UUID). In this case, it will not be formatted with ext4, so you will have to do that with the following command:
+
+```
+lsblk # Figure out the name of the volume, e.g. `/dev/vdc`
+sudo mkfs.ext4 /dev/vdc # Format the volume
+sudo mount /dev/vdc /DATA # Mount the volume
+sudo chown -R ubuntu:ubuntu /DATA # Make sure the volume is owned by the user
+sudo chmod -R 755 /DATA # Make sure the volume is writable
+```
+
+# Comprehensive documentation
+
 ## Full-stack server components
 
 NeuroLibre operates two servers dedicated to serving static files and API endpoints. These servers are designed to provide essential resources and functionality for various purposes, including testing, technical reviews of NeuroLibre Reproducible Preprints (NRPs), and post-publication access, where the resources are reserved for published NRPs only.
