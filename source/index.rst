@@ -12,7 +12,7 @@
    :maxdepth: 2
    :caption: Reader
 
-   READER
+   ARTICLE
 
 .. toctree::
    :maxdepth: 2
